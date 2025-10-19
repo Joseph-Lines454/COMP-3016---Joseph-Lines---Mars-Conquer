@@ -1,4 +1,4 @@
-First Commit for the Mars Conquer Game.
+First Commit for the Evil Spaceman Game.
 
 Overview of the game:
 The game will be a fighting game. The idea of the game is that you are an evil spaceman. 

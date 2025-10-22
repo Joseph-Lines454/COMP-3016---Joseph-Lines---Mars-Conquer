@@ -133,18 +133,14 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="Aliens.cpp" />
     <ClCompile Include="Game.cpp" />
-    <ClCompile Include="LifeForm.cpp" />
+    <ClCompile Include="GameObject.cpp" />
     <ClCompile Include="main.cpp" />
-    <ClCompile Include="SpaceMan.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="Aliens.h" />
-    <ClInclude Include="Fruit.h" />
     <ClInclude Include="Game.h" />
-    <ClInclude Include="LifeForm.h" />
-    <ClInclude Include="SpaceMan.h" />
+    <ClInclude Include="GameObject.h" />
+    <ClInclude Include="Functionality.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

@@ -10,6 +10,7 @@ public:
 
 	SDL_Renderer* getRenderer() { return renderWindow; }
 	
+	//Could update our components here
 	void UpdateGame();
 
 	

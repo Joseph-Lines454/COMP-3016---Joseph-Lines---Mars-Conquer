@@ -18,13 +18,7 @@
     <ClCompile Include="main.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="Aliens.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="LifeForm.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="SpaceMan.cpp">
+    <ClCompile Include="GameObject.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="Game.cpp">
@@ -35,16 +29,10 @@
     <ClInclude Include="Game.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="LifeForm.h">
+    <ClInclude Include="GameObject.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="SpaceMan.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="Aliens.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="Fruit.h">
+    <ClInclude Include="Functionality.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

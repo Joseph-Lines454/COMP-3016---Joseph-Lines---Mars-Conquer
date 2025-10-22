@@ -4,6 +4,7 @@
 
 
 
+
 //Special attack definiton
 void SpaceMan::SpecialAttack() {
 

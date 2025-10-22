@@ -134,6 +134,7 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="Aliens.cpp" />
+    <ClCompile Include="Game.cpp" />
     <ClCompile Include="LifeForm.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="SpaceMan.cpp" />

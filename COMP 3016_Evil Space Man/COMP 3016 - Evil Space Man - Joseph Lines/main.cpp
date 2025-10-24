@@ -3,7 +3,7 @@
 #include <iostream>;
 #include "Game.h"
 #include "MainMenu.h"
-
+#include <SDL3_ttf/SDL_ttf.h>
 int main(int argc, char *argv[])
 {
     SDL_Init(SDL_INIT_VIDEO);

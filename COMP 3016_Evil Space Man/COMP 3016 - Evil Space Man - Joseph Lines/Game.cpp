@@ -1,13 +1,13 @@
 #include "Game.h"
 #include <iostream>
-
+#include <SDL3/SDL.h>
 // Methods have been declared in the header file, Methods are being decleared here
 
-Game::Game(char* windowName, int width, int height, SDL_WindowFlags flags, char* rendererName){ 
+Game::Game(const char* windowName, int width, int height, SDL_WindowFlags flags){ 
 	try
 	{
 		newWindow = SDL_CreateWindow(windowName, width, height, flags);
-		renderWindow = SDL_CreateRenderer(newWindow, rendererName);
+		renderWindow = SDL_CreateRenderer(newWindow, NULL);
 	}
 	catch(SDL_Window* windowExcept)
 	{
@@ -21,7 +21,11 @@ Game::Game(char* windowName, int width, int height, SDL_WindowFlags flags, char*
 
 
 
+
+
 void Game::UpdateGame()
 {
 
 }
+
+

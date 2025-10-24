@@ -13,12 +13,15 @@ private:
 public:
 
 	//Templates to allow for any time of class to be inputted
-	template <class T>
-	void InputValues(T value)
-	{
+	
+	
+	//template <class T>
 
-		value = (BaseClass)value
-		Component->push_back(value);
+	//void InputValues(T value)
+	//{
+
+		//value = (BaseClass)value
+		//Component->push_back(value);
 		//Looping through untill we reach the final memory address
 
 		/*
@@ -29,7 +32,7 @@ public:
 			Components->push_back(*classInput);
 		}*/
 
-	}
+	//}
 
 
 

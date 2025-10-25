@@ -1,6 +1,7 @@
 #pragma once
 #include <iostream>
 #include <SDL3/SDL.h>
+#include <SDL3_ttf/SDL_ttf.h>
 class Game
 {
 	//Game Methods
@@ -14,10 +15,13 @@ public:
 
 
 	void Destory_Window();
+
+	void RenderFont(std::wstring textInput, TTF_Font* newStyle);
+	
 protected:
 	//When declared, not pointing to any valid memory
 	SDL_Window* newWindow;
 	SDL_Renderer* renderWindow;
-
-	
+	SDL_Texture* combinedTexture;
+	SDL_FRect* rect;
 };

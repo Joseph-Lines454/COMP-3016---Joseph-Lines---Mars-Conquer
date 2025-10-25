@@ -7,17 +7,25 @@
 int main(int argc, char *argv[])
 {
     SDL_Init(SDL_INIT_VIDEO);
-
+    TTF_Init();
     
 
     //Creating a character system
    
 
     //gameOne->InputValues(new Physics());
+    int windowWidth = 800;
+    int windowHeight = 800;
+    std::wstring title = L"A Evil SpaceMan";
+    MainMenu* gameNew = new MainMenu("EvilSpaceMan", windowWidth, windowHeight,0);
+    TTF_Font* newFont = TTF_OpenFont("Assets/Fonts/RubikGlitch-Regular.ttf", 80);
+    if (newFont == NULL)
+    {
+        std::cout << "This did not work!" << std::endl;
+    }
 
-   
-    MainMenu* gameNew = new MainMenu("EvilSpaceMan", 600, 400,0);
-
+    gameNew->RenderFont(title, newFont, &windowWidth, &windowHeight);
+    
 
     //Game Loop
 

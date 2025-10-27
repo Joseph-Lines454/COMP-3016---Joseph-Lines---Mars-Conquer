@@ -19,7 +19,7 @@ bool MainMenu::PlayButtonCheck()
 
 	while (SDL_PollEvent(&event))
 	
-	if (event.type == SDL_EVENT_KEY_DOWN)
+	if (event.type == SDL_EVENT_KEY_UP)
 	{
 		return true;
 	}

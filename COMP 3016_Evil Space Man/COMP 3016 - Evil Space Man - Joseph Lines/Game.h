@@ -10,16 +10,17 @@ class Game
 public:
 	//SDL window initalize function does not support std libary, therefore had to use char*
 	Game(const char* windowName,int width, int height, SDL_WindowFlags flags);
+	Game() = default;
 	SDL_Renderer* getRenderer() { return renderWindow; }
 	
 	//Could update our components here
 	virtual void UpdateGame();
-	SDL_Surface* RenderFont(std::wstring textInput);
+	
 	
 	virtual SDL_Renderer* GetRenderWindow();
 protected:
 	//When declared, not pointing to any valid memory
-	
+	virtual SDL_Surface* RenderFont(std::wstring textInput);
 
 	SDL_Window* newWindow;
 	SDL_Renderer* renderWindow;

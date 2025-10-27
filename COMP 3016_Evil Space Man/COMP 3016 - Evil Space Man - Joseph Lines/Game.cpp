@@ -50,7 +50,7 @@ SDL_Surface* Game::RenderFont(std::wstring textInput)
 
 	// Make Each letter as a surface
 
-	int TextHeight = 200;
+	int TextHeight = 100;
 	int TextWidth = 0;
 
 	for (int i = 0; i < textInput.size(); i++)
@@ -63,11 +63,10 @@ SDL_Surface* Game::RenderFont(std::wstring textInput)
 
 	}
 
-
+	std::cout << "This is where I am 1" << std::endl;
 
 	for (int j = 0; j < letterSurfaces.size(); j++)
 	{
-		std::cout << letterSurfaces[j]->h << " " << letterSurfaces[j]->w << std::endl;
 		TextWidth = TextWidth + letterSurfaces[j]->w;
 	}
 
@@ -75,6 +74,8 @@ SDL_Surface* Game::RenderFont(std::wstring textInput)
 	float indivualSpacing = letterSurfaces.size() / 20;
 
 	SDL_Surface* letterCombinationSurface = SDL_CreateSurface(TextWidth, TextHeight, SDL_PIXELFORMAT_RGBA32);
+
+	std::cout << "This is where I am 2" << std::endl;
 	if (!letterCombinationSurface)
 	{
 		std::cout << "Issue here!" << std::endl;
@@ -100,7 +101,7 @@ SDL_Surface* Game::RenderFont(std::wstring textInput)
 
 
 	}
-
+	letterSurfaces.empty();
 	return letterCombinationSurface;
 
 

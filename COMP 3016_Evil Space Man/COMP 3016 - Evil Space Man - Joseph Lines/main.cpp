@@ -4,6 +4,7 @@
 #include "Game.h"
 #include "MainMenu.h"
 #include <SDL3_ttf/SDL_ttf.h>
+#include "Instructions.h"
 int main(int argc, char *argv[])
 {
     SDL_Init(SDL_INIT_VIDEO);
@@ -29,10 +30,21 @@ int main(int argc, char *argv[])
         if (gameNew->PlayButtonCheck())
         {
             //Some code that transports the user into the game - Let the user change window
-        }
 
-        
-    }    
+            std::cout << "Now we are cooking with some gas HAHAH";
+            break;
+        }
+    }       
+    //Cleanup
+    
+    
+    SDL_Renderer* renderTemp = gameNew->GetRenderWindow();
+    delete gameNew;
+    Instructions* Instruction = new Instructions();
+    Instruction->InstructionText(renderTemp);
+    Instruction->UpdateGame();
+
+
 }
 
 

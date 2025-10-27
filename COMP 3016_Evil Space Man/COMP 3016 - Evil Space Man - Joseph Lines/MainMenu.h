@@ -9,7 +9,7 @@ class MainMenu : Game
 public:
 	//Using the games constructor
 	using Game::Game;
-
+	MainMenu();
 	//Could update our components here
 	void UpdateGame() override;
 	//SDL_Surface* RenderFont(std::wstring textInput);

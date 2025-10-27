@@ -1,14 +1,5 @@
-﻿  Game.cpp
-  GameObject.cpp
-C:\Users\pring\OneDrive\Desktop\COMP 3016 - Game Dev - Joseph Lines\COMP 3016_Evil Space Man\COMP 3016 - Evil Space Man - Joseph Lines\Game.cpp(17,20): warning C4101: 'windowExcept': unreferenced local variable
-C:\Users\pring\OneDrive\Desktop\COMP 3016 - Game Dev - Joseph Lines\COMP 3016_Evil Space Man\COMP 3016 - Evil Space Man - Joseph Lines\Game.cpp(21,23): warning C4101: 'renderer': unreferenced local variable
-C:\Users\pring\OneDrive\Desktop\COMP 3016 - Game Dev - Joseph Lines\COMP 3016_Evil Space Man\COMP 3016 - Evil Space Man - Joseph Lines\Game.cpp(75,24): warning C4244: 'initializing': conversion from 'unsigned __int64' to 'float', possible loss of data
-C:\Users\pring\OneDrive\Desktop\COMP 3016 - Game Dev - Joseph Lines\COMP 3016_Evil Space Man\COMP 3016 - Evil Space Man - Joseph Lines\Game.cpp(87,51): warning C4838: conversion from 'unsigned __int64' to 'int' requires a narrowing conversion
-C:\Users\pring\OneDrive\Desktop\COMP 3016 - Game Dev - Joseph Lines\COMP 3016_Evil Space Man\COMP 3016 - Evil Space Man - Joseph Lines\Game.cpp(87,51): warning C4267: 'initializing': conversion from 'size_t' to 'int', possible loss of data
-C:\Users\pring\OneDrive\Desktop\COMP 3016 - Game Dev - Joseph Lines\COMP 3016_Evil Space Man\COMP 3016 - Evil Space Man - Joseph Lines\Game.cpp(87,87): warning C4838: conversion from 'unsigned __int64' to 'int' requires a narrowing conversion
-C:\Users\pring\OneDrive\Desktop\COMP 3016 - Game Dev - Joseph Lines\COMP 3016_Evil Space Man\COMP 3016 - Evil Space Man - Joseph Lines\Game.cpp(87,87): warning C4267: 'initializing': conversion from 'size_t' to 'int', possible loss of data
+﻿  Instructions.cpp
   main.cpp
 C:\Users\pring\OneDrive\Desktop\COMP 3016 - Game Dev - Joseph Lines\COMP 3016_Evil Space Man\COMP 3016 - Evil Space Man - Joseph Lines\main.cpp(3,10): warning C4067: unexpected tokens following preprocessor directive - expected a newline
-  MainMenu.cpp
   Generating Code...
   COMP 3016 - Evil Space Man - Joseph Lines.vcxproj -> C:\Users\pring\OneDrive\Desktop\COMP 3016 - Game Dev - Joseph Lines\COMP 3016_Evil Space Man\x64\Debug\COMP 3016 - Evil Space Man - Joseph Lines.exe

@@ -43,8 +43,7 @@
               "ViewState": "AgIAAAMAAAAAAAAAAAAAAA4AAAALAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000680|",
               "WhenOpened": "2025-10-25T11:16:16.182Z",
-              "IsPinned": true,
-              "EditorCaption": ""
+              "IsPinned": true
             },
             {
               "$type": "Document",
@@ -54,7 +53,7 @@
               "RelativeDocumentMoniker": "COMP 3016 - Evil Space Man - Joseph Lines\\MainMenu.cpp",
               "ToolTip": "C:\\Users\\pring\\OneDrive\\Desktop\\COMP 3016 - Game Dev - Joseph Lines\\COMP 3016_Evil Space Man\\COMP 3016 - Evil Space Man - Joseph Lines\\MainMenu.cpp",
               "RelativeToolTip": "COMP 3016 - Evil Space Man - Joseph Lines\\MainMenu.cpp",
-              "ViewState": "AgIAAAgAAAAAAAAAAAAAABkAAAAOAAAAAAAAAA==",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAB8AAAAsAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
               "WhenOpened": "2025-10-24T20:56:52.04Z",
               "IsPinned": true,
@@ -70,8 +69,7 @@
               "RelativeToolTip": "COMP 3016 - Evil Space Man - Joseph Lines\\MainMenu.h",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAABAAAAA9AAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000680|",
-              "WhenOpened": "2025-10-25T18:03:42.378Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-10-25T18:03:42.378Z"
             },
             {
               "$type": "Document",
@@ -83,8 +81,7 @@
               "RelativeToolTip": "COMP 3016 - Evil Space Man - Joseph Lines\\main.cpp",
               "ViewState": "AgIAAAIAAAAAAAAAAAAAACIAAAAJAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
-              "WhenOpened": "2025-10-24T20:50:51.949Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-10-24T20:50:51.949Z"
             },
             {
               "$type": "Document",

@@ -32,6 +32,13 @@ SDL_Renderer* Game::GetRenderWindow() {
 
 };
 
+SDL_Window* Game::GetWindow() {
+
+
+	return newWindow;
+
+};
+
 
 void Game::UpdateGame()
 {

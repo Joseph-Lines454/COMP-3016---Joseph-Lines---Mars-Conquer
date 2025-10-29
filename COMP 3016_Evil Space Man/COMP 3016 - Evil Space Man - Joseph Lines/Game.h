@@ -16,7 +16,7 @@ public:
 	//Could update our components here
 	virtual void UpdateGame();
 	
-	
+	virtual SDL_Window* GetWindow();
 	virtual SDL_Renderer* GetRenderWindow();
 protected:
 	//When declared, not pointing to any valid memory

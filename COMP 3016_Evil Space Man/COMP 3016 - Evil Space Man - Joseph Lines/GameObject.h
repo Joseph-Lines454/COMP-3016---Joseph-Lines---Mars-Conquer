@@ -3,41 +3,28 @@
 #include <iostream>
 #include <vector>
 #include "Functionality.h"
+#include "MovementComponent.h"
+#include "GraphicsComponent.h"
+
+//Decoupling pattern, component
 class GameObject
 {
 private:
-	// A component can not be of a template type - therfore we need to use polymorphic casting
+	
+	//We want to attach the Graphics and input method to this class
+	//For now lets just use a object vairable
+	//Components Have to be added to the game Object like now
 
 	std::vector<BaseClass>* Component;
 
+	//Pointer to the movement domain
+	
+	MovementComponent* movement;
+	GraphicsComponent* graphics;
 public:
-
-	//Templates to allow for any time of class to be inputted
-	
-	
-	//template <class T>
-
-	//void InputValues(T value)
-	//{
-
-		//value = (BaseClass)value
-		//Component->push_back(value);
-		//Looping through untill we reach the final memory address
-
-		/*
-		int FinalAdress = classInput + classInput.size();
-		for (classInput < FinalAdress; classInput++)
-		{
-			//Dereferencing and adding it to the components vector
-			Components->push_back(*classInput);
-		}*/
-
-	//}
-
-
-
-
-
-
+	//We need an update fuction here that allows for us to cycle 
+	GameObject(GraphicsComponent* graphicsIn, MovementComponent* movementIn);
+	// Some other paramaters may follow
+	void update();
 
 };

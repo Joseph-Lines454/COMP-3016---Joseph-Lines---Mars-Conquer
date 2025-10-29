@@ -17,7 +17,7 @@ public:
 	void SetPressPlay(std::wstring textIn, int setXpos, int setYpos);
 	bool PlayButtonCheck();
 	virtual SDL_Renderer* GetRenderWindow();
-
+	virtual SDL_Window* GetWindow();
 private:
 	std::wstring title;
 	//default font that is going to be used for the title screen

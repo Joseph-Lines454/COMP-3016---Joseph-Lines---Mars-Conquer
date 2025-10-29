@@ -39,7 +39,7 @@ void Instructions::UpdateGame()
 	}
 	SDL_RenderPresent(renderWindow);
 	SDL_Delay(1000);
-	SDL_RenderClear(renderWindow);
+	
 }
 
 void Instructions::InstructionText(SDL_Renderer* renderTemp)

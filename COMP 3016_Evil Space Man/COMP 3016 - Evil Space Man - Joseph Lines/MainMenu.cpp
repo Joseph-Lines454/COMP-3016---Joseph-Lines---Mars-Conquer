@@ -12,6 +12,10 @@ SDL_Renderer* MainMenu::GetRenderWindow() {
 	return renderWindow;
 };
 
+SDL_Window* MainMenu::GetWindow() {
+	return newWindow;
+}
+
 
 bool MainMenu::PlayButtonCheck()
 {
@@ -19,10 +23,12 @@ bool MainMenu::PlayButtonCheck()
 
 	while (SDL_PollEvent(&event))
 	
-	if (event.type == SDL_EVENT_KEY_UP)
+	if (event.type == SDL_EVENT_KEY_DOWN || event.type == SDL_EVENT_KEY_UP)
 	{
 		return true;
 	}
+
+
 	return false;
 
 }

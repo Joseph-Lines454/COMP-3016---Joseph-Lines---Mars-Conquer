@@ -3,18 +3,17 @@
 #include "GraphicsComponent.h"
 #include "SDL3/SDL.h"
 #include <map>
-GraphicsComponent::GraphicsComponent(std::map <std::string, std::string> RenderWalkingEast, std::map <std::string, std::string> RenderActionsEast , SDL_Window* windowPass, SDL_Renderer* rendererPass) {
+GraphicsComponent::GraphicsComponent(std::map <std::string, std::string> RenderWalkingEast, std::map <std::string, std::string> RenderActionsEast, SDL_Renderer* rendererPass) {
 	//We need to make the relative paths into SDL_Rect Objects
 
 	//Assign the passed window functions to the class Render Functions
-	newWindow = windowPass;
+
 	renderWindow = rendererPass;
+	int windowWidth, windowHeight;
 
 	//Define all of the walk comonents
 	TextureCreation(RenderWalkingEast, EastWalk);
 	TextureCreation(RenderActionsEast, EastActions);
-	
-
 };
 
 //Create Surfaces
@@ -63,16 +62,25 @@ SDL_Texture* GraphicsComponent::GetTexture(std::string surfaceTag, std::map <std
 	}
 }
 
+void GraphicsComponent::SetRectangle(SDL_FRect* rectangleIn)
+{
+	Rectangle = rectangleIn;
+}
 
+SDL_Texture* GraphicsComponent::GetTexureExt()
+{
+	return TextureRender;
+}
 
 void GraphicsComponent::RenderUpdate(std::string movementType)
 {
-	Rectangle = new SDL_FRect{ 0.0f,0.0f,100.0f,100.0f };
+	
 	SDL_Texture* TextTemp = nullptr;
-	SDL_RenderClear(renderWindow);
+	//SDL_RenderClear(renderWindow);
 
 	if (movementType == "SpaceMan_Walking_East")
 	{
+		
 		EastWalkingIndex = (EastWalkingIndex + 1) % 4;
 		
 		std::cout << EastWalkingIndex << std::endl;
@@ -88,43 +96,53 @@ void GraphicsComponent::RenderUpdate(std::string movementType)
 		
 		
 	}
+	if (movementType == "SpaceMan_Walking_West")
+	{
+		EastWalkingIndex = EastWalkingIndex - 1;
+		if (EastWalkingIndex == -1)
+		{
+			EastWalkingIndex = 3;
+		}
+		std::cout << EastWalkingIndex << std::endl;
+		
+
+		
+		auto EastElem = EastWalk.rbegin();
+		//std::advance(EastElem, 0);
+		std::advance(EastElem, EastWalkingIndex);
+
+		//std::cout << EastElem->first << std::endl;
+
+		//Gets the name we need to 
+		movementType = EastElem->first;
+		TextTemp = GetTexture(movementType, EastWalk);
+
+
+	}
+	
+
 	if (movementType == "SpaceMan_Croutching" || movementType == "SpaceMan_Shooting" || movementType == "SpaceMan_Standing" || movementType == "SpaceMan_punch" || movementType == "SpaceMan_Kicking")
 	{
 		
 		TextTemp = GetTexture(movementType, EastActions);
 		
 	}
+	
+
+
 	//Inital Render
 	if (TextTemp != NULL)
 	{
-		SDL_RenderTexture(renderWindow, TextTemp, NULL, Rectangle);
+		//SDL_RenderTexture(renderWindow, TextTemp, NULL, Rectangle);
+		TextureRender = TextTemp;
 	}
 	if (TextTemp == NULL)
 	{
 		std::cout << "Could not see the graphic!" << std::endl;
 	}
 	
-	SDL_RenderPresent(renderWindow);
+	//SDL_RenderPresent(renderWindow);
 	
-}
-
-void GraphicsComponent::RenderInital()
-{
-	//Loading the background image for the game
-	
-	//Inital size and position of the character
-	Rectangle = new SDL_FRect{ 0.0f,0.0f,100.0f,100.0f };
-
-	SDL_RenderClear(renderWindow);
-
-
-
-	//Inital Render
-	
-	SDL_Texture* TextTemp = GetTexture("SpaceMan_Standing", EastActions);
-	SDL_RenderTexture(renderWindow,TextTemp, NULL, Rectangle);
-	
-	SDL_RenderPresent(renderWindow);
 }
 
 

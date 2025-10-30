@@ -3,10 +3,18 @@
 #include <SDL3/SDL.h>
 
 
+
+MovementComponent::MovementComponent()
+{
+	int windowWidth, windowHeight = 0;
+	
+	std::cout << windowHeight << std::endl;
+	recttangleMove = new SDL_FRect{ 0.0f,800 - 150,150.0f,150.0f };
+}
 std::string MovementComponent::Update()
 {
 	
-
+	
 
 	//Key detection - We need to limit this to every frame otherwise the character will move to quickly
 
@@ -23,19 +31,33 @@ std::string MovementComponent::Update()
 			if (event.key.scancode == SDL_SCANCODE_D)
 			{
 				std::cout << "The player is moving left!" << std::endl;
-			
+				currentposX = currentposX + 10;
 				return "SpaceMan_Walking_East";
 			}
 			else if (event.key.scancode == SDL_SCANCODE_A)
 			{
+				currentposX = currentposX - 10;
 				std::cout << "The player is moving right!" << std::endl;
 				
-				return "walking_west";
+				return "SpaceMan_Walking_West";
 			}
 			else if (event.key.scancode == SDL_SCANCODE_F)
 			{
 				return "SpaceMan_Shooting";
 			}
+			else if (event.key.scancode == SDL_SCANCODE_C)
+			{
+				return "SpaceMan_Croutching";
+			}
+			else if (event.key.scancode == SDL_SCANCODE_SPACE)
+			{
+				return "SpaceMan_punch";
+			}
+			else if (event.key.scancode == SDL_SCANCODE_R)
+			{
+				return "SpaceMan_Kicking";
+			}
+			
 			
 		}
 		if (event.type == SDL_EVENT_KEY_UP)
@@ -44,19 +66,10 @@ std::string MovementComponent::Update()
 			return "SpaceMan_Standing";
 
 		}
-		
-
-		
 	}
 
-
-	//This has to be done per frame
-
+	recttangleMove->x = currentposX;	
 	return "";
-	
-
-	//CheckCollision();
-
 };
 
 
@@ -79,4 +92,11 @@ void MovementComponent::CheckCollision(SDL_FRect* Viewing)
 	//Another some 
 
 }
+
+SDL_FRect* MovementComponent::GetRectangle()
+{
+	return recttangleMove;
+}
+
+
 

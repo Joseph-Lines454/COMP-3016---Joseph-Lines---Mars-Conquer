@@ -9,27 +9,23 @@ public:
 
 	
 
-	GraphicsComponent(std::map <std::string, std::string> RenderWalkingEast, std::map <std::string, std::string> RenderActionsEast, SDL_Window* windowPass, SDL_Renderer* rendererPass);
-	
-
-	//Some methods here are needed to render the image correctly
-
-	void TextureCreation(std::map <std::string, std::string> surfaceCreation, std::map <std::string, SDL_Texture*>& surfaceMap);
+	GraphicsComponent(std::map <std::string, std::string> RenderWalkingEast, std::map <std::string, std::string> RenderActionsEast, SDL_Renderer* rendererPass);
 	//we should start with idle first
 	
-	void RenderInital();
-	SDL_Texture* GetTexture(std::string surfaceTag, std::map <std::string, SDL_Texture*>& TextureGet);
 	void RenderUpdate(std::string movementType);
-
+	void SetRectangle(SDL_FRect* rectangleIn);
+	SDL_Texture* GetTexureExt();
 private:
 	//
 	std::map <std::string, SDL_Texture*> EastActions;
 	std::map <std::string, SDL_Texture*> EastWalk;
-
+	SDL_Texture* GetTexture(std::string surfaceTag, std::map <std::string, SDL_Texture*>& TextureGet);
+	void TextureCreation(std::map <std::string, std::string> surfaceCreation, std::map <std::string, SDL_Texture*>& surfaceMap);
 	// This is needed for when we render to the screen
 	SDL_Window* newWindow;
 	SDL_Renderer* renderWindow;
 	SDL_FRect* Rectangle;
 	int EastWalkingIndex = -1;
-
+	SDL_Texture* TextureRender;
+	
 };

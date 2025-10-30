@@ -1,2 +1,5 @@
-﻿  MovementComponent.cpp
+﻿  main.cpp
+C:\Users\pring\OneDrive\Desktop\COMP 3016 - Game Dev - Joseph Lines\COMP 3016_Evil Space Man\COMP 3016 - Evil Space Man - Joseph Lines\main.cpp(3,10): warning C4067: unexpected tokens following preprocessor directive - expected a newline
+C:\Users\pring\OneDrive\Desktop\COMP 3016 - Game Dev - Joseph Lines\COMP 3016_Evil Space Man\COMP 3016 - Evil Space Man - Joseph Lines\main.cpp(81,29): warning C4244: 'argument': conversion from 'Uint64' to 'Uint32', possible loss of data
+C:\Users\pring\OneDrive\Desktop\COMP 3016 - Game Dev - Joseph Lines\COMP 3016_Evil Space Man\COMP 3016 - Evil Space Man - Joseph Lines\main.cpp(69,16): warning C4101: 'duration': unreferenced local variable
   COMP 3016 - Evil Space Man - Joseph Lines.vcxproj -> C:\Users\pring\OneDrive\Desktop\COMP 3016 - Game Dev - Joseph Lines\COMP 3016_Evil Space Man\x64\Debug\COMP 3016 - Evil Space Man - Joseph Lines.exe

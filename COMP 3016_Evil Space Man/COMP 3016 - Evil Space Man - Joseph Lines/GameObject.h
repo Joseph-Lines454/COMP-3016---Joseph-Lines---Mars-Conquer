@@ -25,6 +25,6 @@ public:
 	//We need an update fuction here that allows for us to cycle 
 	GameObject(GraphicsComponent* graphicsIn,MovementComponent* movementSpaceMan);
 	// Some other paramaters may follow
-	void update();
+	void update(SDL_Renderer* renderTemp);
 
 };

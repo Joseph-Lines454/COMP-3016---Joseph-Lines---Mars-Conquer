@@ -12,11 +12,11 @@ public:
 
 	std::string Update();
 	void CheckCollision(SDL_FRect* Viewing);
-	
+	SDL_FRect* GetRectangle();
 	//Some methods here are needed to render the image correctly
-
-
+	MovementComponent();
 	
+
 
 
 private:
@@ -25,4 +25,6 @@ private:
 	int currentPosY = 0;
 	SDL_Window* newWindow;
 	SDL_Renderer* renderWindow;
+	SDL_FRect* recttangleMove;
+
 };

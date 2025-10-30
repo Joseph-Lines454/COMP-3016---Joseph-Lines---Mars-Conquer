@@ -16,14 +16,21 @@ GameObject::GameObject(GraphicsComponent* graphicsIn, MovementComponent* movemen
 	graphics = graphicsIn;
 	//movement = movementIn;
 	movement = movementSpaceMan;
-	graphics->RenderInital();
+	
 };
 
-void GameObject::update()
+void GameObject::update(SDL_Renderer* renderTemp )
 {
+
+	
+	SDL_RenderTexture(renderTemp, graphics->GetTexureExt(), NULL, movement->GetRectangle());
 	std::string movementVar = movement->Update();
 	if (movementVar != "")
 	{
+		//Changing the viewing position
+		graphics->SetRectangle(movement->GetRectangle());
+
+		//chaning to the correct move
 		graphics->RenderUpdate(movementVar);
 	}
 	

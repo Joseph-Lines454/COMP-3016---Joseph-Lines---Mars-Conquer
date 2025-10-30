@@ -21,15 +21,15 @@ bool MainMenu::PlayButtonCheck()
 {
 	SDL_Event event;
 
-	while (SDL_PollEvent(&event))
-	
-	if (event.type == SDL_EVENT_KEY_DOWN || event.type == SDL_EVENT_KEY_UP)
-	{
-		return true;
+	while (SDL_PollEvent(&event)) {
+
+		if (event.type == SDL_EVENT_KEY_DOWN || event.type == SDL_EVENT_KEY_UP)
+		{
+			return true;
+		}
+
+		return false;
 	}
-
-
-	return false;
 
 }
 

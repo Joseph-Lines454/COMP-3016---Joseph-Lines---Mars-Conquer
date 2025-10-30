@@ -3,47 +3,61 @@
 #include "GraphicsComponent.h"
 #include "SDL3/SDL.h"
 #include <map>
-GraphicsComponent::GraphicsComponent(std::map <std::string, std::string> AssetPaths, SDL_Window* windowPass, SDL_Renderer* rendererPass) {
+GraphicsComponent::GraphicsComponent(std::map <std::string, std::string> RenderWalkingEast, std::map <std::string, std::string> RenderActionsEast , SDL_Window* windowPass, SDL_Renderer* rendererPass) {
 	//We need to make the relative paths into SDL_Rect Objects
 
 	//Assign the passed window functions to the class Render Functions
 	newWindow = windowPass;
 	renderWindow = rendererPass;
 
+	//Define all of the walk comonents
+	TextureCreation(RenderWalkingEast, EastWalk);
+	TextureCreation(RenderActionsEast, EastActions);
 	
-	for (auto i = AssetPaths.begin(); i != AssetPaths.end(); i++)
+
+};
+
+//Create Surfaces
+
+void GraphicsComponent::TextureCreation(std::map <std::string, std::string> surfaceCreation, std::map <std::string, SDL_Texture*>& surfaceMap)
+{
+	for (auto i = surfaceCreation.begin(); i != surfaceCreation.end(); i++)
 	{
 		//Makes the asset path into a SDL surface, then it is passed into the assets.
-		
+
 		//converting string to char* for surface
 		SDL_Surface* surfaceTemp = SDL_LoadBMP(i->second.c_str());
-		Assets.insert({ i->first,surfaceTemp });
-	}
-
-};
-
-void GraphicsComponent::UpdateImage(std::string Action,int posX, int PosY) {
-	
-	
-
-};
+		SDL_Texture* TextTemp = SDL_CreateTextureFromSurface(renderWindow,surfaceTemp);
 
 
-SDL_Surface* GraphicsComponent::GetSurface(std::string surfaceFind)
-{
-	for (auto i = Assets.begin(); i != Assets.end(); i++)
-	{
-		//Makes the asset path into a SDL surface, then it is passed into the assets.
-
-		std::string temp = i->first;
-
-
-		//Seperate functionality for walking
-
-		//Makes the asset path into a SDL surface, then it is passed into the assets.
-		if (temp.find(surfaceFind))
+		if (!surfaceTemp)
 		{
-			//Send the user to the appropriate method
+			std::cout << "Error here!" << std::endl;
+			std::cout << i->first << std::endl;
+		}
+		else
+		{
+			std::cout << "No Error here!" << std::endl;
+			std::cout << i->first << std::endl;
+		}
+		if (!TextTemp)
+		{
+			std::cout << "Didnt Work!" << std::endl;
+		}
+		else
+		{
+			surfaceMap.insert({ i->first,TextTemp });
+		}
+		
+	}
+}
+
+SDL_Texture* GraphicsComponent::GetTexture(std::string surfaceTag, std::map <std::string, SDL_Texture*>& TextureGet){
+
+	for (auto i = TextureGet.begin(); i != TextureGet.end(); i++)
+	{
+		if (i->first == surfaceTag)
+		{
 			return i->second;
 		}
 	}
@@ -51,37 +65,68 @@ SDL_Surface* GraphicsComponent::GetSurface(std::string surfaceFind)
 
 
 
-
-
-void GraphicsComponent::RenderImage(int posX, int posY) {
+void GraphicsComponent::RenderUpdate(std::string movementType)
+{
+	Rectangle = new SDL_FRect{ 0.0f,0.0f,100.0f,100.0f };
+	SDL_Texture* TextTemp = nullptr;
 	SDL_RenderClear(renderWindow);
 
-	//We are going to have to get the Position RenderCors
+	if (movementType == "SpaceMan_Walking_East")
+	{
+		EastWalkingIndex = (EastWalkingIndex + 1) % 4;
+		
+		std::cout << EastWalkingIndex << std::endl;
+		auto EastElem = EastWalk.begin();
+		std::advance(EastElem, 0);
+		std::advance(EastElem, EastWalkingIndex);
+		
+		std::cout << EastElem->first << std::endl;
 
-
-	//This is the size and where it will be rendered
-
-
-
-	// This will get the standing surface to start of with, with the character
-	SDL_Texture* RenderAnimation = SDL_CreateTextureFromSurface(renderWindow, GetSurface("SpaceMan_Standing"));
-
-	SDL_FRect* rectTemp = new SDL_FRect{ 0,0,static_cast<float>(posX),static_cast<float>(posY)};
-
-
-
-	SDL_RenderTexture(renderWindow, RenderAnimation, NULL, rectTemp);
-
-
+		//Gets the name we need to 
+		movementType = EastElem->first;
+		TextTemp = GetTexture(movementType, EastWalk);
+		
+		
+	}
+	if (movementType == "SpaceMan_Croutching" || movementType == "SpaceMan_Shooting" || movementType == "SpaceMan_Standing" || movementType == "SpaceMan_punch" || movementType == "SpaceMan_Kicking")
+	{
+		
+		TextTemp = GetTexture(movementType, EastActions);
+		
+	}
+	//Inital Render
+	if (TextTemp != NULL)
+	{
+		SDL_RenderTexture(renderWindow, TextTemp, NULL, Rectangle);
+	}
+	if (TextTemp == NULL)
+	{
+		std::cout << "Could not see the graphic!" << std::endl;
+	}
 	
 	SDL_RenderPresent(renderWindow);
 	
-
-
-};
-
-
-void GraphicsComponent::WalkingAnimation()
-{
-	//depending on where the character currently is
 }
+
+void GraphicsComponent::RenderInital()
+{
+	//Loading the background image for the game
+	
+	//Inital size and position of the character
+	Rectangle = new SDL_FRect{ 0.0f,0.0f,100.0f,100.0f };
+
+	SDL_RenderClear(renderWindow);
+
+
+
+	//Inital Render
+	
+	SDL_Texture* TextTemp = GetTexture("SpaceMan_Standing", EastActions);
+	SDL_RenderTexture(renderWindow,TextTemp, NULL, Rectangle);
+	
+	SDL_RenderPresent(renderWindow);
+}
+
+
+
+

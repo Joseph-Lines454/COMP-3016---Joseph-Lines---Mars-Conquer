@@ -23,7 +23,7 @@ private:
 	GraphicsComponent* graphics;
 public:
 	//We need an update fuction here that allows for us to cycle 
-	GameObject(GraphicsComponent* graphicsIn, MovementComponent* movementIn);
+	GameObject(GraphicsComponent* graphicsIn,MovementComponent* movementSpaceMan);
 	// Some other paramaters may follow
 	void update();
 

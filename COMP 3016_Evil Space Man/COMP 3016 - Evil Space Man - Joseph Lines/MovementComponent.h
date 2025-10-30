@@ -1,43 +1,28 @@
 #pragma once
-#include "GameObject.h"
+#pragma once
+#include <map>
 #include <iostream>
-#include <vector>
-//Movement Class for the player
-
-
-
+#include "SDL3/SDL.h"
+#include <map>
 class MovementComponent {
-
 public:
-	//Should use a reference
-	//void update(GameObject sprite);
+	//Get the images inputted here
 
+	// Some shit herelol!
 
-
-	//Should we include the graphics component here?
-
-	void MoveRight();
-
-	void MoveLeft();
-
-	void Punch();
-
-	void Kick();
-
-	void Block();
-
-	void Shoot();
-
-
-
-
-
+	std::string Update();
+	void CheckCollision(SDL_FRect* Viewing);
+	
+	//Some methods here are needed to render the image correctly
 
 
 	
 
 
-
-
-
+private:
+	//coordinates for the window - we will check once we collide with the world componenet
+	int currentposX = 0;
+	int currentPosY = 0;
+	SDL_Window* newWindow;
+	SDL_Renderer* renderWindow;
 };

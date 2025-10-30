@@ -25,9 +25,10 @@ int main(int argc, char* argv[])
     gameNew->SetPressPlay(L"Click Any Key", 1, 1);
 
     //Current Game loop
+    gameNew->UpdateGame();
     while (true)
     {
-        gameNew->UpdateGame();
+        
         if (gameNew->PlayButtonCheck())
         {
             //Some code that transports the user into the game - Let the user change window
@@ -49,9 +50,16 @@ int main(int argc, char* argv[])
 
     // Game Loop Now
 
-    std::map <std::string, std::string> AssetPassParam = { { "Standing", "Assets/SpaceMan_PNG/SpaceMan_East/SpaceMan_Standing.bmp"} };
-    GraphicsComponent* graphicsSpaceMan = new GraphicsComponent(AssetPassParam, windowTemp, renderTemp);
-    GameObject* SpaceMan = new GameObject(graphicsSpaceMan);
+    std::map <std::string, std::string> AssetsWalk = {{"Walking_One","Assets/SpaceMan_PNG/SpaceMan_East/Walking/Walk_One_East.bmp"},{"Walking_Two","Assets/SpaceMan_PNG/SpaceMan_East/Walking/Walk_Two_East.bmp"}
+    ,{"Walking_Three","Assets/SpaceMan_PNG/SpaceMan_East/Walking/Walk_Three_East.bmp"},{"Walking_Four","Assets/SpaceMan_PNG/SpaceMan_East/Walking/Walk_Four_East.bmp"} };
+
+    std::map <std::string, std::string> AssetsActions = { { "SpaceMan_Standing", "Assets/SpaceMan_PNG/SpaceMan_East/SpaceMan_Standing.bmp"},{ "SpaceMan_Shooting", "Assets/SpaceMan_PNG/SpaceMan_East/SpaceMan_shooting.bmp"} };
+    
+    GraphicsComponent* graphicsSpaceMan = new GraphicsComponent(AssetsWalk,AssetsActions, windowTemp, renderTemp);
+    MovementComponent* movementSpaceMan = new MovementComponent();
+    GameObject* SpaceMan = new GameObject(graphicsSpaceMan,movementSpaceMan);
+
+
     while (true)
     {
         SpaceMan->update();

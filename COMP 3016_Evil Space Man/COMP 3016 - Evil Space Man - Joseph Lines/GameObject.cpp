@@ -5,24 +5,29 @@
 #include "Functionality.h"
 #include "MovementComponent.h"
 #include "GraphicsComponent.h"
+#include "GameObject.h"
 
-
-GameObject::GameObject(GraphicsComponent* graphicsIn, MovementComponent* movementIn) {
+GameObject::GameObject(GraphicsComponent* graphicsIn, MovementComponent* movementSpaceMan) {
 
 
 	//Here we can assign our different classes
 
 
 	graphics = graphicsIn;
-	movement = movementIn;
-	
-
-
-
+	//movement = movementIn;
+	movement = movementSpaceMan;
+	graphics->RenderInital();
 };
 
 void GameObject::update()
 {
-	//First render of an image
-	graphics->RenderImage(100,100);
+	std::string movementVar = movement->Update();
+	if (movementVar != "")
+	{
+		graphics->RenderUpdate(movementVar);
+	}
+	
+	
 }
+
+

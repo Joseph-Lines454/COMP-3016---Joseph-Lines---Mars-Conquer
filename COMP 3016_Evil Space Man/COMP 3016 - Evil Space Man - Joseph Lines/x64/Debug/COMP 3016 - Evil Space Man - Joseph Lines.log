@@ -1,4 +1,4 @@
 ﻿  AlienMov.cpp
-C:\Users\pring\OneDrive\Desktop\COMP 3016 - Game Dev - Joseph Lines\COMP 3016_Evil Space Man\COMP 3016 - Evil Space Man - Joseph Lines\AlienMov.cpp(8,6): warning C4101: 'windowWidth': unreferenced local variable
-C:\Users\pring\OneDrive\Desktop\COMP 3016 - Game Dev - Joseph Lines\COMP 3016_Evil Space Man\COMP 3016 - Evil Space Man - Joseph Lines\AlienMov.cpp(17,22): warning C4244: '=': conversion from 'int' to 'float', possible loss of data
+C:\Users\pring\OneDrive\Desktop\COMP 3016 - Game Dev - Joseph Lines\COMP 3016_Evil Space Man\COMP 3016 - Evil Space Man - Joseph Lines\AlienMov.cpp(12,6): warning C4101: 'windowWidth': unreferenced local variable
+C:\Users\pring\OneDrive\Desktop\COMP 3016 - Game Dev - Joseph Lines\COMP 3016_Evil Space Man\COMP 3016 - Evil Space Man - Joseph Lines\AlienMov.cpp(35,23): warning C4244: '=': conversion from 'int' to 'float', possible loss of data
   COMP 3016 - Evil Space Man - Joseph Lines.vcxproj -> C:\Users\pring\OneDrive\Desktop\COMP 3016 - Game Dev - Joseph Lines\COMP 3016_Evil Space Man\x64\Debug\COMP 3016 - Evil Space Man - Joseph Lines.exe

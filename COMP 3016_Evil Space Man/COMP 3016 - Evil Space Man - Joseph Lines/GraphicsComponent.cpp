@@ -1,3 +1,4 @@
+#pragma once
 #include <vector>
 #include <iostream>
 #include "GraphicsComponent.h"
@@ -104,7 +105,7 @@ void GraphicsComponent::RenderUpdate(std::string movementType, SDL_FRect* rectag
 	if (movementType == "SpaceMan_Walking_West")
 	{
 		EastWalkingIndex = EastWalkingIndex - 1;
-		if (EastWalkingIndex == -1)
+		if (EastWalkingIndex <= -1)
 		{
 			EastWalkingIndex = 3;
 		}

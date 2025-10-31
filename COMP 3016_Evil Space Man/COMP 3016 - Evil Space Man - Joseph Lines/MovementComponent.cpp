@@ -1,3 +1,4 @@
+#pragma once
 #include <iostream>
 #include "MovementComponent.h"
 #include <SDL3/SDL.h>

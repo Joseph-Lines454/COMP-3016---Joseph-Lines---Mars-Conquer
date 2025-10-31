@@ -2,11 +2,10 @@
 #include <SDL3/SDL.h>
 #include <iostream>
 #include <vector>
-#include "Functionality.h"
 #include "MovementComponent.h"
 #include "GraphicsComponent.h"
 #include "Collision.h"
-
+#include "Health.h"
 //Decoupling pattern, component
 class GameObject
 {

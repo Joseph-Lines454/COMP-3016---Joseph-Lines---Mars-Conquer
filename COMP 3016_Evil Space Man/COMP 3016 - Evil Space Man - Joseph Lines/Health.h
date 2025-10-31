@@ -1,5 +1,5 @@
 #pragma once
-class Alien;
+
 
 class Health {
 private:
@@ -7,5 +7,6 @@ private:
 
 public:
 	int GetHealth();
-
+	void SetHealth(int health);
+	Health(int health);
 };

@@ -11,10 +11,9 @@ public:
 	// Some shit herelol!
 
 	std::string Update();
-	void CheckCollision(SDL_FRect* Viewing);
 	SDL_FRect* GetRectangle();
 	//Some methods here are needed to render the image correctly
-	MovementComponent();
+	MovementComponent(int XstartPos);
 	
 
 

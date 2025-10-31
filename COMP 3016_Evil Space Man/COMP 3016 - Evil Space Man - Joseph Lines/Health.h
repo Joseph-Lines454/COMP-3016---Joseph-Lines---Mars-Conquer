@@ -1,7 +1,11 @@
 #pragma once
+class Alien;
 
+class Health {
+private:
+	int health;
 
-class Collision
-{
-	
+public:
+	int GetHealth();
+
 };

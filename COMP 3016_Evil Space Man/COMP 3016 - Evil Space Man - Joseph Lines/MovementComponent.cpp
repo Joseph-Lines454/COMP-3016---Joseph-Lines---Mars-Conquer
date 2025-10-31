@@ -4,12 +4,12 @@
 
 
 
-MovementComponent::MovementComponent()
+MovementComponent::MovementComponent(int XstartPos)
 {
 	int windowWidth, windowHeight = 0;
 	
 	std::cout << windowHeight << std::endl;
-	recttangleMove = new SDL_FRect{ 0.0f,800 - 150,150.0f,150.0f };
+	recttangleMove = new SDL_FRect{ static_cast<float>(XstartPos),800 - 150,150.0f,150.0f};
 }
 std::string MovementComponent::Update()
 {
@@ -73,25 +73,7 @@ std::string MovementComponent::Update()
 };
 
 
-void MovementComponent::CheckCollision(SDL_FRect* Viewing)
-{
 
-	//Need to check if the rectangle is within this area
-	//This wont be correct, will deal with this later
-
-
-	if (SDL_GetWindowSurface(newWindow)->h <= Viewing->y && Viewing->y <= 0) {
-	
-		std::cout << "Probs Make this a return statement because" << std::endl;
-	}
-	else if (SDL_GetWindowSurface(newWindow)->w <= Viewing->x && Viewing->x <= 0) {
-
-		std::cout << "To Far X Aixs " << std::endl;
-	}
-
-	//Another some 
-
-}
 
 SDL_FRect* MovementComponent::GetRectangle()
 {

@@ -5,26 +5,29 @@
 #include "Functionality.h"
 #include "MovementComponent.h"
 #include "GraphicsComponent.h"
+#include "Collision.h"
 
 //Decoupling pattern, component
 class GameObject
 {
-private:
+protected:
 	
 	//We want to attach the Graphics and input method to this class
 	//For now lets just use a object vairable
 	//Components Have to be added to the game Object like now
 
-	std::vector<BaseClass>* Component;
+	
 
 	//Pointer to the movement domain
 	
 	MovementComponent* movement;
 	GraphicsComponent* graphics;
+	Health* health;
 public:
 	//We need an update fuction here that allows for us to cycle 
-	GameObject(GraphicsComponent* graphicsIn,MovementComponent* movementSpaceMan);
+	GameObject(GraphicsComponent* graphicsIn,MovementComponent* movementSpaceMan, Health* healthSpaceMan);
+	GameObject() = default;
 	// Some other paramaters may follow
-	void update(SDL_Renderer* renderTemp);
+	virtual void update(SDL_Renderer* renderTemp);
 
 };

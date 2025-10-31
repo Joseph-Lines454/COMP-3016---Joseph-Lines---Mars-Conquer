@@ -72,8 +72,13 @@ SDL_Texture* GraphicsComponent::GetTexureExt()
 	return TextureRender;
 }
 
-void GraphicsComponent::RenderUpdate(std::string movementType)
+void GraphicsComponent::RenderUpdate(std::string movementType, SDL_FRect* rectagleUp, SDL_Renderer* renderIn)
 {
+	if (movementType != "")
+	{
+		SetRectangle(rectagleUp);
+	}
+
 	
 	SDL_Texture* TextTemp = nullptr;
 	//SDL_RenderClear(renderWindow);
@@ -135,14 +140,15 @@ void GraphicsComponent::RenderUpdate(std::string movementType)
 	{
 		//SDL_RenderTexture(renderWindow, TextTemp, NULL, Rectangle);
 		TextureRender = TextTemp;
+		
 	}
-	if (TextTemp == NULL)
+	if (TextTemp == NULL && movementType != "")
 	{
 		std::cout << "Could not see the graphic!" << std::endl;
 	}
 	
 	//SDL_RenderPresent(renderWindow);
-	
+	SDL_RenderTexture(renderIn, TextureRender, NULL, Rectangle);
 }
 
 

@@ -12,11 +12,11 @@ public:
 	GraphicsComponent(std::map <std::string, std::string> RenderWalkingEast, std::map <std::string, std::string> RenderActionsEast, SDL_Renderer* rendererPass);
 	//we should start with idle first
 	
-	void RenderUpdate(std::string movementType);
-	void SetRectangle(SDL_FRect* rectangleIn);
+	void RenderUpdate(std::string movementType, SDL_FRect* rectagleUp, SDL_Renderer* renderIn);
+	
 	SDL_Texture* GetTexureExt();
 private:
-	//
+	void SetRectangle(SDL_FRect* rectangleIn);
 	std::map <std::string, SDL_Texture*> EastActions;
 	std::map <std::string, SDL_Texture*> EastWalk;
 	SDL_Texture* GetTexture(std::string surfaceTag, std::map <std::string, SDL_Texture*>& TextureGet);

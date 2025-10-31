@@ -5,6 +5,8 @@
 #include "MainMenu.h"
 #include <SDL3_ttf/SDL_ttf.h>
 #include "Instructions.h"
+#include "AlienMov.h"
+#include "AlienGameObject.h"
 #include <map>
 int main(int argc, char* argv[])
 {
@@ -48,10 +50,25 @@ int main(int argc, char* argv[])
     std::map <std::string, std::string> AssetsActionsEast = { { "SpaceMan_Standing", "Assets/SpaceMan_PNG/SpaceMan_East/SpaceMan_Standing.bmp"},{ "SpaceMan_Shooting", "Assets/SpaceMan_PNG/SpaceMan_East/SpaceMan_shooting.bmp"},{ "SpaceMan_punch", "Assets/SpaceMan_PNG/SpaceMan_East/SpaceMan_punch.bmp"},{ "SpaceMan_Kicking", "Assets/SpaceMan_PNG/SpaceMan_East/SpaceMan_Kicking.bmp"},{ "SpaceMan_fighting_stance", "Assets/SpaceMan_PNG/SpaceMan_East/SpaceMan_fighting_stance.bmp"},{ "SpaceMan_Croutching", "Assets/SpaceMan_PNG/SpaceMan_East/SpaceMan_Croutching.bmp"} };
 
     GraphicsComponent* graphicsSpaceMan = new GraphicsComponent(AssetsWalkEast,AssetsActionsEast, renderTemp);
-    MovementComponent* movementSpaceMan = new MovementComponent();
-    GameObject* SpaceMan = new GameObject(graphicsSpaceMan,movementSpaceMan);
+    MovementComponent* movementSpaceMan = new MovementComponent(650);
+    Health* healthSpaceMan = new Health();
+    GameObject* SpaceMan = new GameObject(graphicsSpaceMan,movementSpaceMan, healthSpaceMan);
 
     //END OF SPACEMAN DEFINITION
+
+  
+
+    
+    std::map <std::string, std::string> AssetsWalkEastAlien = { {"Walking_One","Assets/AlienOne_PNG/Alien_One_West/Walking/Walk_One.bmp"},{"Walking_Two","Assets/AlienOne_PNG/Alien_One_West/Walking/Walk_Two.bmp"}
+    ,{"Walking_Three","Assets/AlienOne_PNG/Alien_One_West/Walking/Walk_Three.bmp"},{"Walking_Four","Assets/AlienOne_PNG/Alien_One_West/Walking/Walk_Four.bmp"} };
+    std::map <std::string, std::string> AssetsActionsEastAlien = { { "SpaceMan_Standing", "Assets/AlienOne_PNG/Alien_One_West/Alien_Stand.bmp"},{ "SpaceMan_Shooting", "Assets/AlienOne_PNG/Alien_One_West/AlienShoot.bmp"},{ "SpaceMan_punch", "Assets/AlienOne_PNG/Alien_One_West/Alien_Punch.bmp"},{ "SpaceMan_Kicking", "Assets/AlienOne_PNG/Alien_One_West/Alien_Kick.png"},{ "SpaceMan_fighting_stance", "Assets/AlienOne_PNG/Alien_One_West/Alien_Fighting_Stance.bmp"},{ "SpaceMan_Croutching", "Assets/AlienOne_PNG/Alien_One_West/Alien_Crouth.bmp"} };
+
+    //Figure out how to implement different controls
+    
+    GraphicsComponent* graphicsAlien = new GraphicsComponent(AssetsWalkEastAlien, AssetsActionsEastAlien, renderTemp);
+    AlienMov* movementAlien = new AlienMov(100);
+    Health* healthAlien = new Health();
+    AlienGameObject* Alien = new AlienGameObject(graphicsAlien, movementAlien, healthAlien);
 
 
     //Level 1
@@ -68,6 +85,8 @@ int main(int argc, char* argv[])
         SDL_Surface* bmp = SDL_LoadBMP("Assets/Backgrounds/Mars_Menu_Background.bmp");
         SDL_Texture* textureBackground = SDL_CreateTextureFromSurface(renderTemp, bmp);
         SDL_RenderTexture(renderTemp, textureBackground, NULL, NULL);
+        
+        Alien->update(renderTemp);
         SpaceMan->update(renderTemp);
         SDL_RenderPresent(renderTemp);
         Uint64 frameDuration = SDL_GetTicks() - start;

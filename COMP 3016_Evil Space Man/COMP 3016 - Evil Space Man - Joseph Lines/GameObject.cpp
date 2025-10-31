@@ -7,7 +7,9 @@
 #include "GraphicsComponent.h"
 #include "GameObject.h"
 
-GameObject::GameObject(GraphicsComponent* graphicsIn, MovementComponent* movementSpaceMan) {
+//User Files
+
+GameObject::GameObject(GraphicsComponent* graphicsIn, MovementComponent* movementSpaceMan, Health* healthSpaceMan) {
 
 
 	//Here we can assign our different classes
@@ -16,25 +18,15 @@ GameObject::GameObject(GraphicsComponent* graphicsIn, MovementComponent* movemen
 	graphics = graphicsIn;
 	//movement = movementIn;
 	movement = movementSpaceMan;
-	
+	health = healthSpaceMan;
 };
 
-void GameObject::update(SDL_Renderer* renderTemp )
+
+//if we pass in world here
+void GameObject::update(SDL_Renderer* renderTemp)
 {
-
-	
-	SDL_RenderTexture(renderTemp, graphics->GetTexureExt(), NULL, movement->GetRectangle());
-	std::string movementVar = movement->Update();
-	if (movementVar != "")
-	{
-		//Changing the viewing position
-		graphics->SetRectangle(movement->GetRectangle());
-
-		//chaning to the correct move
-		graphics->RenderUpdate(movementVar);
-	}
-	
-	
+	//So far, we are rendering movement and the graphic
+	graphics->RenderUpdate(movement->Update(), movement->GetRectangle(), renderTemp);
 }
 
 

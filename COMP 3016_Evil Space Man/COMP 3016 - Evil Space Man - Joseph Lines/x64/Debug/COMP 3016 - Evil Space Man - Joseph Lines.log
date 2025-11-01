@@ -1,7 +1,2 @@
-﻿  Bullet.cpp
-C:\Users\pring\OneDrive\Desktop\COMP 3016 - Game Dev - Joseph Lines\COMP 3016_Evil Space Man\COMP 3016 - Evil Space Man - Joseph Lines\Bullet.h(2,10): warning C4067: unexpected tokens following preprocessor directive - expected a newline
-  (compiling source file 'Bullet.cpp')
-  
-C:\Users\pring\OneDrive\Desktop\COMP 3016 - Game Dev - Joseph Lines\COMP 3016_Evil Space Man\COMP 3016 - Evil Space Man - Joseph Lines\Bullet.cpp(40,22): warning C4244: '=': conversion from 'int' to 'float', possible loss of data
-C:\Users\pring\OneDrive\Desktop\COMP 3016 - Game Dev - Joseph Lines\COMP 3016_Evil Space Man\COMP 3016 - Evil Space Man - Joseph Lines\Bullet.cpp(35,1): warning C4717: 'ViewBulletGet': recursive on all control paths, function will cause runtime stack overflow
+﻿  EndScreen.cpp
   COMP 3016 - Evil Space Man - Joseph Lines.vcxproj -> C:\Users\pring\OneDrive\Desktop\COMP 3016 - Game Dev - Joseph Lines\COMP 3016_Evil Space Man\x64\Debug\COMP 3016 - Evil Space Man - Joseph Lines.exe

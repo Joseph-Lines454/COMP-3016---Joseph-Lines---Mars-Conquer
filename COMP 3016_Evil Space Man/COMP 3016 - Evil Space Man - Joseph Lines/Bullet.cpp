@@ -4,11 +4,11 @@
 //Bullet Constructor
 
 
-Bullet::Bullet(int xPos, int Ypos, SDL_Renderer* renderBullIn, const char* AssetName)
+Bullet::Bullet(SDL_Renderer* renderBullIn, const char* AssetName)
 {
 	this->xPos = xPos;
 	this->yPos = yPos;
-	ViewBullet = new SDL_FRect{ static_cast<float>(yPos),static_cast<float>(xPos),50.0f,50.0f};
+	//ViewBullet = new SDL_FRect{ static_cast<float>(yPos),static_cast<float>(xPos),50.0f,50.0f};
 	SDL_Surface* surfaceTemp = SDL_LoadBMP(AssetName);
 	SDL_Texture* TextTemp = SDL_CreateTextureFromSurface(renderBullIn, surfaceTemp);
 	renderIn = renderBullIn;
@@ -27,38 +27,43 @@ Bullet::Bullet(int xPos, int Ypos, SDL_Renderer* renderBullIn, const char* Asset
 	}
 
 	BulletText = TextTemp;
-	SDL_RenderTexture(renderIn, BulletText, NULL, ViewBullet);
-}
-SDL_FRect* ViewBulletGet()
-{
-	return ViewBulletGet();
+	
 }
 
 
-void  Bullet::MoveBulletUpdate(SDL_FRect* Target, Health* other) {
+void Bullet::SetNewPos(float xPos, float yPos) {
+	
+	ViewBullet = new SDL_FRect(xPos,yPos,50.0f,50.0f);
+	
+	this->xPos = xPos;
+	this->xPos = yPos;
+};
+
+bool Bullet::MoveBulletUpdate(SDL_FRect* Target, Health* other) {
 	//Because the Alien is using it, shoot at the player
-	ViewBullet->x = xPos--;
-	SDL_RenderTexture(renderIn, BulletText, NULL, ViewBullet);
+
+	ViewBullet->x = ViewBullet->x - 4;
+	
+
 	//Render Bullet here
 
-	if (ViewBullet->x == Target->x)
-	{
-		//some code here that takes health of other player
-	}
-	else if (ViewBullet->x == 0)
+	if (ViewBullet->x >= 10)
 	{
 		//some code here that destroys bullet and Resets for next use
-
+		SDL_RenderTexture(renderIn, BulletText, NULL, ViewBullet);
 	}
-	
-	std::cout << "SHOULD BE RENDERING!! " << std::endl;
-	if (BulletText == NULL)
+	if (ViewBullet->x == Target->x)
 	{
-		std::cout << "Texture issue!" << std::endl;
+		other->SetHealth(100);
+		std::cout << "Hit!" << std::endl;
+		return true;
+		//some code here that takes health of other playercccccccccc
 	}
-
-
 	
+	
+	
+
+	return false;
 	
 
 }

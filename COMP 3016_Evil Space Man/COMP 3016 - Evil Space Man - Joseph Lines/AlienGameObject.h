@@ -13,7 +13,7 @@ private:
 	Health* HealthIn;
 public:
 	AlienGameObject(GraphicsComponent* graphicsIn, AlienMov* movementSpaceMan, Health* healthSpaceMan);
-	void Update(SDL_Renderer* renderTemp, SDL_FRect* other, Health* otherHealth);
+	void Update(SDL_Renderer* renderTemp, SDL_FRect* other, Health* otherHealth, bool Coutch);
 	bool GetGameOver();
 	bool SetGameOver();
 };

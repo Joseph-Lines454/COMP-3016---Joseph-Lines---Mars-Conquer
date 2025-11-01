@@ -9,6 +9,7 @@
 #include "AlienGameObject.h"
 #include "AlienMov.h"
 #include "Bullet.h"
+#include "EndScreen.h"
 #include <map>
 int main(int argc, char* argv[])
 {
@@ -19,7 +20,7 @@ int main(int argc, char* argv[])
     int windowHeight = 800;
     std::wstring title = L"Evil SpaceMan";
     MainMenu* gameNew = new MainMenu("EvilSpaceMan", windowWidth, windowHeight, 0);
-
+    
     gameNew->SetTitleText(L"Evil SpaceMan", 8, 2);
     gameNew->SetPressPlay(L"Click Any Key", 1, 1);
 
@@ -64,14 +65,15 @@ int main(int argc, char* argv[])
     std::map <std::string, std::string> AssetsActionsEastAlien = { { "SpaceMan_Standing", "Assets/AlienOne_PNG/Alien_One_West/Alien_Stand.bmp"},{ "SpaceMan_Shooting", "Assets/AlienOne_PNG/Alien_One_West/AlienShoot.bmp"},{ "SpaceMan_punch", "Assets/AlienOne_PNG/Alien_One_West/Alien_Punch.bmp"},{ "SpaceMan_Kicking", "Assets/AlienOne_PNG/Alien_One_West/Alien_Kick.bmp"},{ "SpaceMan_fighting_stance", "Assets/AlienOne_PNG/Alien_One_West/Alien_Fighting_Stance.bmp"},{ "SpaceMan_Croutching", "Assets/AlienOne_PNG/Alien_One_West/Alien_Crouth.bmp"} };
 
     //Figure out how to implement different controls
-    
+    //Bullet* bullet = new Bullet(movementAlien->GetRectangle()->x, movementAlien->GetRectangle()->y, renderTemp, "Assets/Bullets/lemon.bmp");
+    Bullet* bullet = new Bullet(renderTemp, "Assets/Bullets/apple.bmp");;
     GraphicsComponent* graphicsAlien = new GraphicsComponent(AssetsWalkEastAlien, AssetsActionsEastAlien, renderTemp);
-    AlienMov* movementAlien = new AlienMov(600, 600);
+    AlienMov* movementAlien = new AlienMov(600, 600, bullet);
     Health* healthAlien = new Health(100);
     AlienGameObject* Alien = new AlienGameObject(graphicsAlien, movementAlien, healthAlien);
-    Bullet* bullet = new Bullet(movementAlien->GetRectangle()->x, movementAlien->GetRectangle()->y,renderTemp,"Assets/Bullets/lemon.bmp");
+   
 
-
+    
 
 
     //Level 1
@@ -89,9 +91,9 @@ int main(int argc, char* argv[])
         SDL_Texture* textureBackground = SDL_CreateTextureFromSurface(renderTemp, bmp);
         SDL_RenderTexture(renderTemp, textureBackground, NULL, NULL);
        
-        bullet->MoveBulletUpdate(movementSpaceMan->GetRectangle(), healthSpaceMan);
+        
         // GameOver?
-        Alien->Update(renderTemp, movementSpaceMan->GetRectangle(), healthSpaceMan);
+        Alien->Update(renderTemp, movementSpaceMan->GetRectangle(), healthSpaceMan, movementSpaceMan->GetCrouth());
         SpaceMan->update(renderTemp, movementAlien->GetRectangle(),healthAlien);
         if (movementAlien->GetGameOver() == true)
         {
@@ -107,6 +109,17 @@ int main(int argc, char* argv[])
         
 
     }
+
+    //Get the health of the player, if the players health is 0 or below Game Over screen
+
+    //Else if the player gets all the way through the game, the player gets
+
+    //RIP
+
+    EndScreen* end = new EndScreen();
+
+
+    end->ReadFromFile();
 
     std::cout << "We have broken out of the game" << std::endl;
     //We need to get all of the positions of the rectangle

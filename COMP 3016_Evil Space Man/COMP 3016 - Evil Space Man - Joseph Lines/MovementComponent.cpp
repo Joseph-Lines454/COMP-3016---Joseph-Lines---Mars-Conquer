@@ -4,7 +4,10 @@
 #include "Health.h"
 #include <SDL3/SDL.h>
 
-
+bool MovementComponent::GetCrouth()
+{
+	return Croutch;
+}
 
 MovementComponent::MovementComponent(int XstartPos)
 {
@@ -18,7 +21,7 @@ std::string MovementComponent::Update(SDL_FRect* other, int health, Health* othe
 	
 	//We want the spaceman not to be to close to the alien
 
-
+	
 
 	
 
@@ -57,7 +60,7 @@ std::string MovementComponent::Update(SDL_FRect* other, int health, Health* othe
 			}
 			else if (event.key.scancode == SDL_SCANCODE_C)
 			{
-				otherhealth->SetHealth(5);
+				Croutch = true;
 				return "SpaceMan_Croutching";
 			}
 			else if (event.key.scancode == SDL_SCANCODE_SPACE)

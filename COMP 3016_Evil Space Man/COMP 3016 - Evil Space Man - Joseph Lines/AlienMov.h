@@ -13,10 +13,10 @@ public:
 
 	// Some shit herelol!
 
-	std::string Update(SDL_FRect* other, int health, Health* otherhealth);
+	std::string Update(SDL_FRect* other, int health, Health* otherhealth, bool Crouth);
 	SDL_FRect* GetRectangle();
 	//Some methods here are needed to render the image correctly
-	AlienMov(int XstartPos,int windowWidth);
+	AlienMov(int XstartPos,int windowWidth, Bullet* BulletIn);
 	bool GetGameOver();
 private:
 	//coordinates for the window - we will check once we collide with the world componenet
@@ -33,5 +33,6 @@ private:
 	int randomNum = 0;
 	int windowWidth;
 	bool GameOver = false;
-	
+	bool newPos = false;
+	Bullet* BulletAlien;
 };

@@ -14,9 +14,9 @@ bool AlienMov::GetGameOver()
 	return GameOver;
 }
 
-AlienMov::AlienMov(int XstartPos, int windowWidth)
+AlienMov::AlienMov(int XstartPos, int windowWidth, Bullet* BulletIn)
 {
-	
+	BulletAlien = BulletIn;
 	recttangleMove = new SDL_FRect{ static_cast<float>(XstartPos),800 - 200,200.0f,200.0f };
 	currentposX = XstartPos;
 	this->windowWidth = windowWidth;
@@ -24,7 +24,7 @@ AlienMov::AlienMov(int XstartPos, int windowWidth)
 }
 
 //Need to compare with other object
-std::string AlienMov::Update(SDL_FRect* other, int health, Health* otherhealth)
+std::string AlienMov::Update(SDL_FRect* other, int health, Health* otherhealth, bool Crouth)
 {
 
 	if (health <= 0 || otherhealth->GetHealth() <= 0)
@@ -70,9 +70,18 @@ std::string AlienMov::Update(SDL_FRect* other, int health, Health* otherhealth)
 
 			return "SpaceMan_Walking_East";
 		}
+		if (health < 40 && recttangleMove->x == windowWidth && newPos == false)
+		{
+			BulletAlien->SetNewPos(recttangleMove->x,recttangleMove->y);
+			newPos = true;
+		}
 		if (health < 40 && recttangleMove->x == windowWidth)
 		{
-			return "SpaceMan_Standing";
+			last = "";
+			std::cout << Crouth << std::endl;
+			if (BulletAlien->MoveBulletUpdate(other, otherhealth) == true && Crouth == false) {
+				GameOver = true;
+			}
 		}
 
 		if (recttangleMove->x == other->x + 20 && currentHit >= maxHit)

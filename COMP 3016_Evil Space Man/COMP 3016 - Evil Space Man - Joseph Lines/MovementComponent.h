@@ -13,7 +13,7 @@ public:
 	SDL_FRect* GetRectangle();
 	//Some methods here are needed to render the image correctly
 	MovementComponent(int XstartPos);
-	
+	bool GetCrouth();
 
 
 
@@ -24,5 +24,5 @@ private:
 	SDL_Window* newWindow;
 	SDL_Renderer* renderWindow;
 	SDL_FRect* recttangleMove;
-
+	bool Croutch = false;
 };

@@ -14,8 +14,8 @@ AlienGameObject::AlienGameObject(GraphicsComponent* graphicsIn, AlienMov* moveme
 	HealthIn = healthSpaceMan;
 }
 
-void AlienGameObject::update(SDL_Renderer* renderTemp, SDL_FRect* other, Health* otherHealth)
+void AlienGameObject::Update(SDL_Renderer* renderTemp, SDL_FRect* other, Health* otherHealth)
 {
 	std::cout << HealthIn->GetHealth();
-	Graphics->RenderUpdate(movement->Update(other,HealthIn->GetHealth(),otherHealth), movement->GetRectangle(), renderTemp);
+	Graphics->RenderUpdate(movement->Update(other, HealthIn->GetHealth(), otherHealth), movement->GetRectangle(), renderTemp);
 }

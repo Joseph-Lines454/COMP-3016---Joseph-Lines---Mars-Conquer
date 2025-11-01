@@ -8,6 +8,7 @@
 #include "Health.h"
 #include "AlienGameObject.h"
 #include "AlienMov.h"
+#include "Bullet.h"
 #include <map>
 int main(int argc, char* argv[])
 {
@@ -68,6 +69,9 @@ int main(int argc, char* argv[])
     AlienMov* movementAlien = new AlienMov(600, 600);
     Health* healthAlien = new Health(100);
     AlienGameObject* Alien = new AlienGameObject(graphicsAlien, movementAlien, healthAlien);
+    Bullet* bullet = new Bullet(movementAlien->GetRectangle()->x, movementAlien->GetRectangle()->y,renderTemp,"Assets/Bullets/lemon.bmp");
+
+
 
 
     //Level 1
@@ -80,14 +84,14 @@ int main(int argc, char* argv[])
         Uint64 start = SDL_GetTicks();
         Uint64 duration;
         SDL_RenderClear(renderTemp);
-        
+       
         SDL_Surface* bmp = SDL_LoadBMP("Assets/Backgrounds/Mars_Menu_Background.bmp");
         SDL_Texture* textureBackground = SDL_CreateTextureFromSurface(renderTemp, bmp);
         SDL_RenderTexture(renderTemp, textureBackground, NULL, NULL);
-
-
+       
+        bullet->MoveBulletUpdate(movementSpaceMan->GetRectangle(), healthSpaceMan);
         // GameOver?
-        Alien->update(renderTemp, movementSpaceMan->GetRectangle(), healthSpaceMan);
+        Alien->Update(renderTemp, movementSpaceMan->GetRectangle(), healthSpaceMan);
         SpaceMan->update(renderTemp, movementAlien->GetRectangle(),healthAlien);
         if (movementAlien->GetGameOver() == true)
         {

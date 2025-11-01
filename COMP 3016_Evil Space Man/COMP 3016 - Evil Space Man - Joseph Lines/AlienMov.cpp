@@ -7,6 +7,8 @@
 #include "AlienMov.h"
 #include <cstdlib>
 
+#include "Bullet.h"
+
 bool AlienMov::GetGameOver()
 {
 	return GameOver;
@@ -14,9 +16,11 @@ bool AlienMov::GetGameOver()
 
 AlienMov::AlienMov(int XstartPos, int windowWidth)
 {
+	
 	recttangleMove = new SDL_FRect{ static_cast<float>(XstartPos),800 - 200,200.0f,200.0f };
 	currentposX = XstartPos;
 	this->windowWidth = windowWidth;
+	
 }
 
 //Need to compare with other object
@@ -29,6 +33,9 @@ std::string AlienMov::Update(SDL_FRect* other, int health, Health* otherhealth)
 		std::cout << "OtherHealth: " << otherhealth->GetHealth() << std::endl;
 		GameOver = true;
 	}
+	
+
+	
 
 	//Slowing down the enemy alien
 	currentTimeSlow =currentTimeSlow + SDL_GetTicks();
@@ -57,11 +64,15 @@ std::string AlienMov::Update(SDL_FRect* other, int health, Health* otherhealth)
 		{
 			currentTimeSlow = 0;
 
-
+			
 			currentposX = currentposX + 5;
 			recttangleMove->x = currentposX;
 
 			return "SpaceMan_Walking_East";
+		}
+		if (health < 40 && recttangleMove->x == windowWidth)
+		{
+			return "SpaceMan_Standing";
 		}
 
 		if (recttangleMove->x == other->x + 20 && currentHit >= maxHit)

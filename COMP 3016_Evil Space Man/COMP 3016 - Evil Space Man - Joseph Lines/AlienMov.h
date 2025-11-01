@@ -5,6 +5,7 @@
 #include "SDL3/SDL.h"
 #include "Health.h"
 #include <stdint.h>
+#include "Bullet.h"
 
 class AlienMov {
 public:
@@ -32,5 +33,5 @@ private:
 	int randomNum = 0;
 	int windowWidth;
 	bool GameOver = false;
-
+	
 };

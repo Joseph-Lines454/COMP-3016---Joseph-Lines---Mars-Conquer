@@ -29,16 +29,15 @@ void GraphicsComponent::TextureCreation(std::map <std::string, std::string> surf
 		SDL_Surface* surfaceTemp = SDL_LoadBMP(i->second.c_str());
 		SDL_Texture* TextTemp = SDL_CreateTextureFromSurface(renderWindow,surfaceTemp);
 
-
 		if (!surfaceTemp)
 		{
 			std::cout << "Error here!" << std::endl;
-			std::cout << i->first << std::endl;
+			
 		}
 		else
 		{
 			std::cout << "No Error here!" << std::endl;
-			std::cout << i->first << std::endl;
+			
 		}
 		if (!TextTemp)
 		{
@@ -47,8 +46,7 @@ void GraphicsComponent::TextureCreation(std::map <std::string, std::string> surf
 		else
 		{
 			surfaceMap.insert({ i->first,TextTemp });
-		}
-		
+		}	
 	}
 }
 
@@ -89,12 +87,12 @@ void GraphicsComponent::RenderUpdate(std::string movementType, SDL_FRect* rectag
 		
 		EastWalkingIndex = (EastWalkingIndex + 1) % 4;
 		
-		std::cout << EastWalkingIndex << std::endl;
+		
 		auto EastElem = EastWalk.begin();
 		std::advance(EastElem, 0);
 		std::advance(EastElem, EastWalkingIndex);
 		
-		std::cout << EastElem->first << std::endl;
+		
 
 		//Gets the name we need to 
 		movementType = EastElem->first;
@@ -109,7 +107,7 @@ void GraphicsComponent::RenderUpdate(std::string movementType, SDL_FRect* rectag
 		{
 			EastWalkingIndex = 3;
 		}
-		std::cout << EastWalkingIndex << std::endl;
+		
 		
 
 		
@@ -142,14 +140,15 @@ void GraphicsComponent::RenderUpdate(std::string movementType, SDL_FRect* rectag
 		//SDL_RenderTexture(renderWindow, TextTemp, NULL, Rectangle);
 		TextureRender = TextTemp;
 		
+		
 	}
 	if (TextTemp == NULL && movementType != "")
 	{
-		std::cout << "Could not see the graphic!" << std::endl;
+		//std::cout << "Could not see the graphic!" << std::endl;
 	}
-	
-	//SDL_RenderPresent(renderWindow);
 	SDL_RenderTexture(renderIn, TextureRender, NULL, Rectangle);
+	//SDL_RenderPresent(renderWindow);
+	
 }
 
 

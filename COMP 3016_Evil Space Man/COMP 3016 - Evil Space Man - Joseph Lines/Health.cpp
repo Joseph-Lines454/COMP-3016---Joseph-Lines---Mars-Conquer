@@ -13,5 +13,5 @@ int Health::GetHealth() {
 
 void Health::SetHealth(int health)
 {
-	this->health = health;
+	this->health = this->health - health;
 }

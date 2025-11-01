@@ -27,6 +27,6 @@ public:
 	GameObject(GraphicsComponent* graphicsIn,MovementComponent* movementSpaceMan, Health* healthSpaceMan);
 	GameObject() = default;
 	// Some other paramaters may follow
-	virtual void update(SDL_Renderer* renderTemp);
+	virtual void update(SDL_Renderer* renderTemp, SDL_FRect* rectangleIn, Health* other);
 
 };

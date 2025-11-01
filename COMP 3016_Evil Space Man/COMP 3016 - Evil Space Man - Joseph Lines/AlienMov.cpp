@@ -7,71 +7,102 @@
 #include "AlienMov.h"
 #include <cstdlib>
 
-AlienMov::AlienMov(int XstartPos)
+bool AlienMov::GetGameOver()
 {
-	int windowWidth, windowHeight = 0;
+	return GameOver;
+}
 
-	std::cout << windowHeight << std::endl;
-	recttangleMove = new SDL_FRect{ static_cast<float>(XstartPos),800 - 150,150.0f,150.0f };
+AlienMov::AlienMov(int XstartPos, int windowWidth)
+{
+	recttangleMove = new SDL_FRect{ static_cast<float>(XstartPos),800 - 200,200.0f,200.0f };
 	currentposX = XstartPos;
+	this->windowWidth = windowWidth;
 }
 
 //Need to compare with other object
 std::string AlienMov::Update(SDL_FRect* other, int health, Health* otherhealth)
 {
-	//some code that detects if window has been hit
 
-
-	//need to check the health of the Alien
-	
-	
-
-	if (recttangleMove->x != other->x && recttangleMove->x >= other->x)
+	if (health <= 0 || otherhealth->GetHealth() <= 0)
 	{
-
-
-
-		currentposX = currentposX - 5;
-		recttangleMove->x = currentposX;
-		return "SpaceMan_Walking_East";
+		std::cout << "Health: " << health << std::endl;
+		std::cout << "OtherHealth: " << otherhealth->GetHealth() << std::endl;
+		GameOver = true;
 	}
 
-	
+	//Slowing down the enemy alien
+	currentTimeSlow =currentTimeSlow + SDL_GetTicks();
+	currentHit = currentHit + SDL_GetTicks();
 
-	
-
-	int randomNum = rand() % 4;
-	if ((recttangleMove->x < other->x + 10 || recttangleMove->x > other->x - 10))
+	if (currentHit >= maxHit)
 	{
-
-		if (randomNum == 1)
-		{
-			otherhealth->SetHealth(otherhealth->GetHealth() - 20);
-			return "SpaceMan_Kicking";
-		}
-		else if (randomNum == 2)
-		{
-			otherhealth->SetHealth(otherhealth->GetHealth() - 10);
-			return "SpaceMan_Punch";
-		}
-		else if (randomNum == 3)
-		{
-			//Shoot a bullet?
-			otherhealth->SetHealth(otherhealth->GetHealth() - 50);
-			return "SpaceMan_Punch";
-		}
-
-		//some random hitting components here
-		std::cout << "Random selection of hitting components" << std::endl;
+		randomNum = rand() % 5;
+		
 	}
 
+	if (currentTimeSlow >= maxTimeSlow)
+	{
+		// need to check 
+		if (recttangleMove->x != other->x + 20 && recttangleMove->x >= other->x + 20 && health >= 40 && (recttangleMove->x) != 0)
+		{
+			currentTimeSlow = 0;
+
+
+			currentposX = currentposX - 5;
+			recttangleMove->x = currentposX;
+			
+			return "SpaceMan_Walking_East";
+		}
+		if (health < 40 && recttangleMove->x != windowWidth)
+		{
+			currentTimeSlow = 0;
+
+
+			currentposX = currentposX + 5;
+			recttangleMove->x = currentposX;
+
+			return "SpaceMan_Walking_East";
+		}
+
+		if (recttangleMove->x == other->x + 20 && currentHit >= maxHit)
+		{
+			currentHit = 0;
+			std::cout << "OtherHealth: " << otherhealth->GetHealth() << std::endl;
+			if (randomNum == 1)
+			{
+				otherhealth->SetHealth(2);
+				
+				last = "SpaceMan_Kicking";
+				return "SpaceMan_Kicking";
+			}
+			else if (randomNum == 2)
+			{
+				otherhealth->SetHealth(5);
+				last = "SpaceMan_punch";
+				return "SpaceMan_punch";
+			}
+			else if (randomNum == 3)
+			{
+				//Shoot a bullet?
+				otherhealth->SetHealth(2);
+				last = "SpaceMan_punch";
+				return "SpaceMan_punch";
+			}
+			else
+			{
+				last = "SpaceMan_Standing";
+				return "SpaceMan_Standing";
+			}
+			
+			//some random hitting components here
+			
+			
+		}
+		
+		currentTimeSlow = 0;
+	}
 	
-	
-
-	//Allow some actions
-
-
-	return "SpaceMan_Standing";
+	return last;
 	
 };
 

@@ -30,8 +30,6 @@ int main(int argc, char* argv[])
         if (gameNew->PlayButtonCheck())
         {
             //Some code that transports the user into the game - Let the user change window
-
-            std::cout << "Now we are cooking with some gas HAHAH";
             break;
         }
     }
@@ -67,7 +65,7 @@ int main(int argc, char* argv[])
     //Figure out how to implement different controls
     
     GraphicsComponent* graphicsAlien = new GraphicsComponent(AssetsWalkEastAlien, AssetsActionsEastAlien, renderTemp);
-    AlienMov* movementAlien = new AlienMov(600);
+    AlienMov* movementAlien = new AlienMov(600, 600);
     Health* healthAlien = new Health(100);
     AlienGameObject* Alien = new AlienGameObject(graphicsAlien, movementAlien, healthAlien);
 
@@ -86,9 +84,15 @@ int main(int argc, char* argv[])
         SDL_Surface* bmp = SDL_LoadBMP("Assets/Backgrounds/Mars_Menu_Background.bmp");
         SDL_Texture* textureBackground = SDL_CreateTextureFromSurface(renderTemp, bmp);
         SDL_RenderTexture(renderTemp, textureBackground, NULL, NULL);
-        
-        Alien->update(renderTemp, movementSpaceMan->GetRectangle(), healthAlien);
-        SpaceMan->update(renderTemp);
+
+
+        // GameOver?
+        Alien->update(renderTemp, movementSpaceMan->GetRectangle(), healthSpaceMan);
+        SpaceMan->update(renderTemp, movementAlien->GetRectangle(),healthAlien);
+        if (movementAlien->GetGameOver() == true)
+        {
+            break;
+        }
         SDL_RenderPresent(renderTemp);
         Uint64 frameDuration = SDL_GetTicks() - start;
 
@@ -100,7 +104,7 @@ int main(int argc, char* argv[])
 
     }
 
-
+    std::cout << "We have broken out of the game" << std::endl;
     //We need to get all of the positions of the rectangle
     
 }

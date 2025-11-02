@@ -2,11 +2,15 @@
 #include "Game.h"
 #include <iostream>
 #include <fstream>
+#include <chrono>
 
-class EndScreen : Game
+
+
+class EndScreen : public Game
 {
 public:
-	void ReadFromFile();
-
-	//virtual SDL_Surface* RenderFont(std::wstring textInput);
+	std::string ReadFromFile(std::chrono::seconds durationIn);
+private:
+	void WriteToFile(Uint64 seconds);
+	
 };

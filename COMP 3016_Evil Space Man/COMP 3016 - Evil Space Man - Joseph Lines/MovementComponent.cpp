@@ -13,28 +13,17 @@ bool MovementComponent::GetCrouth()
 
 MovementComponent::MovementComponent(int XstartPos)
 {
-	int windowWidth, windowHeight = 0;
+	
 	
 	
 	recttangleMove = new SDL_FRect{ static_cast<float>(XstartPos),800 - 200,200.0f,200.0f};
 }
 std::string MovementComponent::Update(SDL_FRect* other, int health, Health* otherhealth)
 {
-	
-	//We want the spaceman not to be to close to the alien
-
-	
-
-	
-
-	//Key detection - We need to limit this to every frame otherwise the character will move to quickly
-
-		
 	SDL_Event event;
-	//Check null
 	while (SDL_PollEvent(&event)) {
 
-		std::cout << otherhealth->GetHealth() << std::endl;
+		
 		
 
 		//This is where to detect Movement of the spaceman

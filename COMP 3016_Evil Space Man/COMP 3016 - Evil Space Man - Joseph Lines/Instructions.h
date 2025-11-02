@@ -17,7 +17,6 @@ public:
 	std::vector<SDL_Texture*> GetTextures();
 	void UpdateGame() override;
 private:
-	//define this so we can go 
 	std::vector<SDL_FRect*> viewText;
 	std::vector<SDL_Texture*> combinedTextureTitle;
 };

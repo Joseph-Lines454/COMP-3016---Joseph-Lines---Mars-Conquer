@@ -11,7 +11,7 @@ class AlienMov {
 public:
 	//Get the images inputted here
 
-	// Some shit herelol!
+	
 
 	std::string Update(SDL_FRect* other, int health, Health* otherhealth, bool Crouth);
 	SDL_FRect* GetRectangle();
@@ -21,7 +21,7 @@ public:
 	void SetGameOver(bool setGameOver);
 	void Reset(int xPos, int yPos);
 private:
-	//coordinates for the window - we will check once we collide with the world componenet
+	//coordinates for the window - we will check once we collide with the world 
 	int currentposX = 0;
 	int currentPosY = 0;
 	SDL_Window* newWindow;

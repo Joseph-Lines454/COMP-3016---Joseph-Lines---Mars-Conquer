@@ -16,6 +16,6 @@ AlienGameObject::AlienGameObject(GraphicsComponent* graphicsIn, AlienMov* moveme
 
 void AlienGameObject::Update(SDL_Renderer* renderTemp, SDL_FRect* other, Health* otherHealth, bool Coutch)
 {
-	std::cout << HealthIn->GetHealth();
+	
 	Graphics->RenderUpdate(movement->Update(other, HealthIn->GetHealth(), otherHealth,Coutch), movement->GetRectangle(), renderTemp);
 }

@@ -47,9 +47,9 @@ void Game::UpdateGame()
 
 
 
-SDL_Surface* Game::RenderFont(std::wstring textInput)
+SDL_Surface* Game::RenderFont(std::string textInput)
 {
-	std::cout << "This is where I am" << std::endl;
+	
 
 	std::vector<SDL_Surface*> letterSurfaces;
 
@@ -70,7 +70,7 @@ SDL_Surface* Game::RenderFont(std::wstring textInput)
 
 	}
 
-	std::cout << "This is where I am 1" << std::endl;
+	
 
 	for (int j = 0; j < letterSurfaces.size(); j++)
 	{
@@ -82,7 +82,6 @@ SDL_Surface* Game::RenderFont(std::wstring textInput)
 
 	SDL_Surface* letterCombinationSurface = SDL_CreateSurface(TextWidth, TextHeight, SDL_PIXELFORMAT_RGBA32);
 
-	std::cout << "This is where I am 2" << std::endl;
 	if (!letterCombinationSurface)
 	{
 		std::cout << "Issue here!" << std::endl;

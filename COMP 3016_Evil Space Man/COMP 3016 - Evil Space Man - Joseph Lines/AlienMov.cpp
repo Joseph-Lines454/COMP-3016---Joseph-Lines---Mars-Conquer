@@ -35,8 +35,7 @@ std::string AlienMov::Update(SDL_FRect* other, int health, Health* otherhealth, 
 
 	if (health <= 0 || otherhealth->GetHealth() <= 0)
 	{
-		std::cout << "Health: " << health << std::endl;
-		std::cout << "OtherHealth: " << otherhealth->GetHealth() << std::endl;
+	
 		GameOver = true;
 	}
 	
@@ -82,7 +81,7 @@ std::string AlienMov::Update(SDL_FRect* other, int health, Health* otherhealth, 
 		}
 		if (health < 40 && recttangleMove->x == windowWidth)
 		{
-			std::cout << Crouth << std::endl;
+			
 
 			if (BulletAlien->MoveBulletUpdate(other, otherhealth, Crouth,alreadyHit) == true) {
 				
@@ -94,7 +93,7 @@ std::string AlienMov::Update(SDL_FRect* other, int health, Health* otherhealth, 
 		if (recttangleMove->x <= other->x + 40 && currentHit >= maxHit)
 		{
 			currentHit = 0;
-			std::cout << "OtherHealth: " << otherhealth->GetHealth() << std::endl;
+			
 			if (randomNum == 1)
 			{
 				otherhealth->SetHealth(2);
@@ -145,4 +144,6 @@ void AlienMov::Reset(int xPos, int yPos) {
 	currentTimeSlow = 0;
 	currentHit = 0;
 	maxTimeSlow = 20000;
+	//Making the game harder for user
+	maxHit = maxHit - 200;
 }

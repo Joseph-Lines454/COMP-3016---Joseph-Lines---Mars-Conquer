@@ -50,7 +50,7 @@ void MainMenu::UpdateGame()
 }
 
 //Code for the TitleText
-void MainMenu::SetTitleText(std::wstring textIn, int setXpos, int setYpos)
+void MainMenu::SetTitleText(std::string textIn, int setXpos, int setYpos)
 {
 	//call render font then 
 	//Getting the surface Back
@@ -62,7 +62,7 @@ void MainMenu::SetTitleText(std::wstring textIn, int setXpos, int setYpos)
 }
 
 //Code for the Key indication
-void MainMenu::SetPressPlay(std::wstring textIn, int setXpos, int setYpos)
+void MainMenu::SetPressPlay(std::string textIn, int setXpos, int setYpos)
 {
 	SDL_Surface* surfaceTemp = RenderFont(textIn);
 	combinedTexturePressPlay = SDL_CreateTextureFromSurface(renderWindow, surfaceTemp);

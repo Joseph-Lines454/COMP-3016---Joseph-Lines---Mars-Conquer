@@ -4,18 +4,12 @@
 #include <vector>
 #include "MovementComponent.h"
 #include "GraphicsComponent.h"
-#include "Collision.h"
+
 #include "Health.h"
 //Decoupling pattern, component
 class GameObject
 {
 protected:
-	
-	//We want to attach the Graphics and input method to this class
-	//For now lets just use a object vairable
-	//Components Have to be added to the game Object like now
-
-	
 
 	//Pointer to the movement domain
 	

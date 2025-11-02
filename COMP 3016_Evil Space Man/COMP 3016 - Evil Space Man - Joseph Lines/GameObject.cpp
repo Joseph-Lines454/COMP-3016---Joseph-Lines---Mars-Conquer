@@ -22,7 +22,7 @@ GameObject::GameObject(GraphicsComponent* graphicsIn, MovementComponent* movemen
 };
 
 
-//if we pass in world here
+
 void GameObject::update(SDL_Renderer* renderTemp, SDL_FRect* rectangleIn, Health* other)
 {
 	//So far, we are rendering movement and the graphic

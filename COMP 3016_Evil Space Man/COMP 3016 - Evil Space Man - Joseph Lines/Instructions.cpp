@@ -46,28 +46,28 @@ void Instructions::InstructionText(SDL_Renderer* renderTemp)
 {
 	renderWindow = renderTemp;
 
-	std::vector<std::wstring> Text;
-	std::cout << "ISSUE!" << std::endl;
+	std::vector<std::string> Text;
+
 	//Setting the text for the game
-	Text.push_back(L"You are an evil spaceMan");
-	Text.push_back(L"Your mission is to exterminate all life from this planet");
-	Text.push_back(L"You must defeat the three hero's of this planet");
-	Text.push_back(L"Good Luck!");
+	Text.push_back("You are an evil spaceMan");
+	Text.push_back("Your mission is to exterminate all life from this planet");
+	Text.push_back("You must defeat the hero of this planet");
+	Text.push_back("Good Luck!");
 	
 	int currentPositionViewY = 20;
-	std::cout << Text.size() << std::endl;
+	
 	
 	
 	
 	
 	for (int i = 0; i < Text.size(); i++)
 	{
-		std::cout << "ViewText: " << viewText.size() << "Texture: " << combinedTextureTitle.size() << std::endl;
+		
 		//combinedTextureTitle[i] = { new SDL_Texture };
 		//viewText[i] = { new SDL_FRect };
 		//Creating a new surface and assiging the renderWindow 
 		SDL_Surface* surfaceTemp = RenderFont(Text[i]);
-		std::cout << surfaceTemp->w << std::endl;
+		
 		int width = 0;
 		if (surfaceTemp->w > 700)
 		{
@@ -91,7 +91,7 @@ void Instructions::InstructionText(SDL_Renderer* renderTemp)
 		currentPositionViewY = currentPositionViewY + 100;
 	}
 
-	std::cout << "Got here!" << std::endl;
+
 	
 
 

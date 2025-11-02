@@ -10,10 +10,14 @@
 #include "AlienMov.h"
 #include "Bullet.h"
 #include "EndScreen.h"
+#include <chrono>
 
 #include <map>
 int main(int argc, char* argv[])
 {
+
+
+
     SDL_Init(SDL_INIT_VIDEO);
     TTF_Init();
 
@@ -22,8 +26,8 @@ int main(int argc, char* argv[])
     std::wstring title = L"Evil SpaceMan";
     MainMenu* gameNew = new MainMenu("EvilSpaceMan", windowWidth, windowHeight, 0);
     
-    gameNew->SetTitleText(L"Evil SpaceMan", 8, 2);
-    gameNew->SetPressPlay(L"Click Any Key", 1, 1);
+    gameNew->SetTitleText("Evil SpaceMan", 8, 2);
+    gameNew->SetPressPlay("Click Any Key", 1, 1);
 
     //Current Game loop
     gameNew->UpdateGame();
@@ -76,10 +80,15 @@ int main(int argc, char* argv[])
     //Level 1
     const int FPS = 60;
     const int Delay = 1000 / FPS;
-    Uint64 GameLength = SDL_GetTicks();
+    
 
-    std::vector<std::wstring> rounds = {L"Round One", L"Round Two", L"Round Three"};
+    std::vector<std::string> rounds = {"Round One", "Round Two", "Round Three"};
   
+
+    
+
+    auto startTimer = std::chrono::steady_clock::now();
+
     //First GameLoop
     for (int i = 0; i < 3; i++)
     {
@@ -126,10 +135,27 @@ int main(int argc, char* argv[])
             
         }
 
-        if (healthSpaceMan->GetHealth() == 0)
+        if (healthSpaceMan->GetHealth() <= 0)
         {
             //Take player to looser screen
-            std::cout << "Player loses";
+            EndScreen* end = new EndScreen();
+
+           
+
+            SDL_RenderClear(renderTemp);
+
+            SDL_Surface* bmp = SDL_LoadBMP("Assets/Backgrounds/Mars_Menu_Background.bmp");
+            SDL_Texture* textureBackground = SDL_CreateTextureFromSurface(renderTemp, bmp);
+
+            SDL_FRect* DisplayFinalScore = new SDL_FRect{ 200.0f,600.0f,200.0f,200.0f };
+            SDL_Texture* newtext = SDL_CreateTextureFromSurface(renderTemp, end->RenderFont("You Lose!"));
+            SDL_RenderTexture(renderTemp, textureBackground, NULL, NULL);
+            SDL_RenderTexture(renderTemp, newtext, NULL, DisplayFinalScore);
+            SDL_RenderPresent(renderTemp);
+            SDL_Delay(10000);
+
+           
+            i = 2;
             break;
         }
        
@@ -139,35 +165,34 @@ int main(int argc, char* argv[])
         movementSpaceMan->UpdateRectangle(100, 600);
         movementAlien->Reset(600, 600);
         
-        //reset all vairables here
+        
     }
-   
-    std::cout << GameLength << std::endl;
+    auto endclock = std::chrono::steady_clock::now();
 
-    
+    if (healthSpaceMan->GetHealth() > 0)
+    {
+        EndScreen* end = new EndScreen();
 
-    
+        std::chrono::nanoseconds difference = endclock - startTimer;
+        std::chrono::duration secondsDuration = std::chrono::duration_cast<std::chrono::seconds>(difference);
 
-  
+        SDL_RenderClear(renderTemp);
 
-
-
-    //Get the health of the player, if the players health is 0 or below Game Over screen
-
-    //Else if the player gets all the way through the game, the player gets
-
-
-    
-
-    //RIP
-
-    EndScreen* end = new EndScreen();
+        SDL_Surface* bmp = SDL_LoadBMP("Assets/Backgrounds/Mars_Menu_Background.bmp");
+        SDL_Texture* textureBackground = SDL_CreateTextureFromSurface(renderTemp, bmp);
 
 
-    end->ReadFromFile();
 
-    std::cout << "We have broken out of the game" << std::endl;
-    //We need to get all of the positions of the rectangle
+
+        SDL_FRect* DisplayFinalScore = new SDL_FRect{ 200.0f,400.0f,600.0f,200.0f };
+        SDL_Texture* newtext = SDL_CreateTextureFromSurface(renderTemp, end->RenderFont(end->ReadFromFile(secondsDuration)));
+        SDL_RenderTexture(renderTemp, textureBackground, NULL, NULL);
+        SDL_RenderTexture(renderTemp, newtext, NULL, DisplayFinalScore);
+        SDL_RenderPresent(renderTemp);
+        SDL_Delay(10000);
+
+        std::cout << "End of Game" << std::endl;
+    }
     
 }
 

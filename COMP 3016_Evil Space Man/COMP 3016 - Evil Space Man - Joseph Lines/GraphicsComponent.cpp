@@ -10,30 +10,29 @@ GraphicsComponent::GraphicsComponent(std::map <std::string, std::string> RenderW
 	//Assign the passed window functions to the class Render Functions
 
 	renderWindow = rendererPass;
-	int windowWidth, windowHeight;
+
 
 	//Define all of the walk comonents
 	TextureCreation(RenderWalkingEast, EastWalk);
 	TextureCreation(RenderActionsEast, EastActions);
 };
 
-//Create Surfaces
+//Create Textures
 
 
 void GraphicsComponent::TextureCreation(std::map <std::string, std::string> surfaceCreation, std::map <std::string, SDL_Texture*>& surfaceMap)
 {
 	for (auto i = surfaceCreation.begin(); i != surfaceCreation.end(); i++)
 	{
-		//Makes the asset path into a SDL surface, then it is passed into the assets.
+		//Makes the asset path into a SDL Texture, then it is passed into the assets.
 
-		//converting string to char* for surface
+		//converting string to char* for Texture
 		SDL_Surface* surfaceTemp = SDL_LoadBMP(i->second.c_str());
 		SDL_Texture* TextTemp = SDL_CreateTextureFromSurface(renderWindow,surfaceTemp);
 
 		if (!surfaceTemp)
 		{
 			std::cout << "Error here!" << std::endl;
-			
 		}
 		else
 		{
@@ -80,7 +79,6 @@ void GraphicsComponent::RenderUpdate(std::string movementType, SDL_FRect* rectag
 	}
 	
 	SDL_Texture* TextTemp = nullptr;
-	//SDL_RenderClear(renderWindow);
 
 	if (movementType == "SpaceMan_Walking_East")
 	{
@@ -91,8 +89,6 @@ void GraphicsComponent::RenderUpdate(std::string movementType, SDL_FRect* rectag
 		//Gets the name we need to 
 		movementType = EastElem->first;
 		TextTemp = GetTexture(movementType, EastWalk);
-		
-		
 	}
 	if (movementType == "SpaceMan_Walking_West")
 	{

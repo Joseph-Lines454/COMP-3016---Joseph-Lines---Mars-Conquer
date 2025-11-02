@@ -13,8 +13,8 @@ public:
 	//Could update our components here
 	void UpdateGame() override;
 	//SDL_Surface* RenderFont(std::wstring textInput);
-	void SetTitleText(std::wstring textIn, int setXpos, int setYpos);
-	void SetPressPlay(std::wstring textIn, int setXpos, int setYpos);
+	void SetTitleText(std::string textIn, int setXpos, int setYpos);
+	void SetPressPlay(std::string textIn, int setXpos, int setYpos);
 	bool PlayButtonCheck();
 	virtual SDL_Renderer* GetRenderWindow();
 	virtual SDL_Window* GetWindow();

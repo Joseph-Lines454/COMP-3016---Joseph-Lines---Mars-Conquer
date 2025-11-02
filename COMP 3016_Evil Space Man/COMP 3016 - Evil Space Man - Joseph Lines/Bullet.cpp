@@ -53,13 +53,11 @@ bool Bullet::MoveBulletUpdate(SDL_FRect* Target, Health* other, bool crouth, boo
 		SDL_RenderTexture(renderIn, BulletText, NULL, ViewBullet);
 	}
 
-	std::cout << Target->x + Target->w << std::endl;
-	std::cout << Target->x - Target->w << std::endl;
-	std::cout << ViewBullet->x << std::endl;
 	
-	if ((ViewBullet->x <= Target->x && ViewBullet->x >= (Target->x - 20)) && alreadyHit == false && crouth == false)
+	
+	if ((ViewBullet->x <= Target->x && ViewBullet->x >= (Target->x - 10)) && alreadyHit == false && crouth == false)
 	{
-		std::cout << "Player Health:" <<  other->GetHealth() << std::endl;
+		
 		other->SetHealth(20);
 		std::cout << "Hit!" << std::endl;
 		return true;

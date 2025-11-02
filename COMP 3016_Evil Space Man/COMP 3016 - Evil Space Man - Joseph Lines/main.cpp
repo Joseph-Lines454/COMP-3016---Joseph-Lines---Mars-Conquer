@@ -10,6 +10,7 @@
 #include "AlienMov.h"
 #include "Bullet.h"
 #include "EndScreen.h"
+
 #include <map>
 int main(int argc, char* argv[])
 {
@@ -68,51 +69,95 @@ int main(int argc, char* argv[])
     //Bullet* bullet = new Bullet(movementAlien->GetRectangle()->x, movementAlien->GetRectangle()->y, renderTemp, "Assets/Bullets/lemon.bmp");
     Bullet* bullet = new Bullet(renderTemp, "Assets/Bullets/apple.bmp");;
     GraphicsComponent* graphicsAlien = new GraphicsComponent(AssetsWalkEastAlien, AssetsActionsEastAlien, renderTemp);
-    AlienMov* movementAlien = new AlienMov(600, 600, bullet);
+    AlienMov* movementAlien = new AlienMov(600, 600, bullet, 400000);
     Health* healthAlien = new Health(100);
     AlienGameObject* Alien = new AlienGameObject(graphicsAlien, movementAlien, healthAlien);
-   
-
-    
-
 
     //Level 1
     const int FPS = 60;
     const int Delay = 1000 / FPS;
-    //First GameLoop
+    Uint64 GameLength = SDL_GetTicks();
 
-    while (true)
+    std::vector<std::wstring> rounds = {L"Round One", L"Round Two", L"Round Three"};
+  
+    //First GameLoop
+    for (int i = 0; i < 3; i++)
     {
-        Uint64 start = SDL_GetTicks();
-        Uint64 duration;
         SDL_RenderClear(renderTemp);
-       
+        Game* playScreen = new Game();
+        SDL_FRect* setPos = new SDL_FRect{ 200.0f,200.0f,200.0f,200.0f };
+        SDL_Texture* newtext = SDL_CreateTextureFromSurface(renderTemp, playScreen->RenderFont(rounds[i]));
+
         SDL_Surface* bmp = SDL_LoadBMP("Assets/Backgrounds/Mars_Menu_Background.bmp");
         SDL_Texture* textureBackground = SDL_CreateTextureFromSurface(renderTemp, bmp);
+
+
         SDL_RenderTexture(renderTemp, textureBackground, NULL, NULL);
-       
-        
-        // GameOver?
-        Alien->Update(renderTemp, movementSpaceMan->GetRectangle(), healthSpaceMan, movementSpaceMan->GetCrouth());
-        SpaceMan->update(renderTemp, movementAlien->GetRectangle(),healthAlien);
-        if (movementAlien->GetGameOver() == true)
+        SDL_RenderTexture(renderTemp, newtext, NULL, setPos);
+        SDL_RenderPresent(renderTemp);
+        SDL_Delay(5000);
+
+
+
+        while (true)
         {
+            Uint64 start = SDL_GetTicks();
+            Uint64 duration;
+            SDL_RenderClear(renderTemp);
+
+            SDL_Surface* bmp = SDL_LoadBMP("Assets/Backgrounds/Mars_Menu_Background.bmp");
+            SDL_Texture* textureBackground = SDL_CreateTextureFromSurface(renderTemp, bmp);
+            SDL_RenderTexture(renderTemp, textureBackground, NULL, NULL);
+
+            Alien->Update(renderTemp, movementSpaceMan->GetRectangle(), healthSpaceMan, movementSpaceMan->GetCrouth());
+            SpaceMan->update(renderTemp, movementAlien->GetRectangle(), healthAlien);
+            if (movementAlien->GetGameOver() == true)
+            {
+                break;
+            }
+            SDL_RenderPresent(renderTemp);
+            Uint64 frameDuration = SDL_GetTicks() - start;
+
+            if (Delay > frameDuration)
+            {
+                SDL_Delay(Delay - frameDuration);
+            }
+            
+            
+        }
+
+        if (healthSpaceMan->GetHealth() == 0)
+        {
+            //Take player to looser screen
+            std::cout << "Player loses";
             break;
         }
-        SDL_RenderPresent(renderTemp);
-        Uint64 frameDuration = SDL_GetTicks() - start;
-
-        if (Delay > frameDuration)
-        {
-            SDL_Delay(Delay - frameDuration);
-        }
+       
+        healthSpaceMan->ResetHealth(100);
+        healthAlien->ResetHealth(100);
+        movementAlien->SetGameOver(false);
+        movementSpaceMan->UpdateRectangle(100, 600);
+        movementAlien->Reset(600, 600);
         
-
+        //reset all vairables here
     }
+   
+    std::cout << GameLength << std::endl;
+
+    
+
+    
+
+  
+
+
 
     //Get the health of the player, if the players health is 0 or below Game Over screen
 
     //Else if the player gets all the way through the game, the player gets
+
+
+    
 
     //RIP
 

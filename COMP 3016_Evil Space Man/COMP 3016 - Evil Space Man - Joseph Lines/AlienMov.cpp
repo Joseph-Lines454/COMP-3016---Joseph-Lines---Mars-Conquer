@@ -14,8 +14,14 @@ bool AlienMov::GetGameOver()
 	return GameOver;
 }
 
-AlienMov::AlienMov(int XstartPos, int windowWidth, Bullet* BulletIn)
+void AlienMov::SetGameOver(bool setGameOver)
 {
+	GameOver = setGameOver;
+}
+
+AlienMov::AlienMov(int XstartPos, int windowWidth, Bullet* BulletIn, Uint64 maxHit)
+{
+	this->maxHit = maxHit;
 	BulletAlien = BulletIn;
 	recttangleMove = new SDL_FRect{ static_cast<float>(XstartPos),800 - 200,200.0f,200.0f };
 	currentposX = XstartPos;
@@ -44,7 +50,6 @@ std::string AlienMov::Update(SDL_FRect* other, int health, Health* otherhealth, 
 	if (currentHit >= maxHit)
 	{
 		randomNum = rand() % 5;
-		
 	}
 
 	if (currentTimeSlow >= maxTimeSlow)
@@ -77,52 +82,48 @@ std::string AlienMov::Update(SDL_FRect* other, int health, Health* otherhealth, 
 		}
 		if (health < 40 && recttangleMove->x == windowWidth)
 		{
-			last = "";
 			std::cout << Crouth << std::endl;
-			if (BulletAlien->MoveBulletUpdate(other, otherhealth) == true && Crouth == false) {
-				GameOver = true;
+
+			if (BulletAlien->MoveBulletUpdate(other, otherhealth, Crouth,alreadyHit) == true) {
+				
+				alreadyHit = true;
 			}
+
 		}
 
-		if (recttangleMove->x == other->x + 20 && currentHit >= maxHit)
+		if (recttangleMove->x <= other->x + 40 && currentHit >= maxHit)
 		{
 			currentHit = 0;
 			std::cout << "OtherHealth: " << otherhealth->GetHealth() << std::endl;
 			if (randomNum == 1)
 			{
 				otherhealth->SetHealth(2);
-				
-				last = "SpaceMan_Kicking";
 				return "SpaceMan_Kicking";
 			}
 			else if (randomNum == 2)
 			{
 				otherhealth->SetHealth(5);
-				last = "SpaceMan_punch";
+				
 				return "SpaceMan_punch";
 			}
 			else if (randomNum == 3)
 			{
-				//Shoot a bullet?
+				
 				otherhealth->SetHealth(2);
-				last = "SpaceMan_punch";
+				
 				return "SpaceMan_punch";
 			}
 			else
-			{
-				last = "SpaceMan_Standing";
+			{	
 				return "SpaceMan_Standing";
 			}
-			
-			//some random hitting components here
-			
-			
+				
 		}
 		
 		currentTimeSlow = 0;
 	}
 	
-	return last;
+	return "";
 	
 };
 
@@ -132,4 +133,16 @@ std::string AlienMov::Update(SDL_FRect* other, int health, Health* otherhealth, 
 SDL_FRect* AlienMov::GetRectangle()
 {
 	return recttangleMove;
+}
+
+void AlienMov::Reset(int xPos, int yPos) {
+	recttangleMove->x = xPos;
+	recttangleMove->y = yPos;
+	currentposX = xPos;
+	currentPosY = yPos;
+	alreadyHit = false;
+	newPos = false;
+	currentTimeSlow = 0;
+	currentHit = 0;
+	maxTimeSlow = 20000;
 }

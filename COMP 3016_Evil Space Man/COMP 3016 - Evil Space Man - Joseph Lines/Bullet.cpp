@@ -33,32 +33,39 @@ Bullet::Bullet(SDL_Renderer* renderBullIn, const char* AssetName)
 
 void Bullet::SetNewPos(float xPos, float yPos) {
 	
-	ViewBullet = new SDL_FRect(xPos,yPos,50.0f,50.0f);
+	ViewBullet = new SDL_FRect(xPos,yPos,40.0f,40.0f);
 	
 	this->xPos = xPos;
 	this->xPos = yPos;
 };
 
-bool Bullet::MoveBulletUpdate(SDL_FRect* Target, Health* other) {
+bool Bullet::MoveBulletUpdate(SDL_FRect* Target, Health* other, bool crouth, bool alreadyHit) {
 	//Because the Alien is using it, shoot at the player
 
 	ViewBullet->x = ViewBullet->x - 4;
 	
-
+	//Pass croutch into here?
 	//Render Bullet here
-
-	if (ViewBullet->x >= 10)
+	
+	if (ViewBullet->x >= 10 && alreadyHit == false)
 	{
 		//some code here that destroys bullet and Resets for next use
 		SDL_RenderTexture(renderIn, BulletText, NULL, ViewBullet);
 	}
-	if (ViewBullet->x == Target->x)
+
+	std::cout << Target->x + Target->w << std::endl;
+	std::cout << Target->x - Target->w << std::endl;
+	std::cout << ViewBullet->x << std::endl;
+	
+	if ((ViewBullet->x <= Target->x && ViewBullet->x >= (Target->x - 20)) && alreadyHit == false && crouth == false)
 	{
-		other->SetHealth(100);
+		std::cout << "Player Health:" <<  other->GetHealth() << std::endl;
+		other->SetHealth(20);
 		std::cout << "Hit!" << std::endl;
 		return true;
-		//some code here that takes health of other playercccccccccc
+		
 	}
+	
 	
 	
 	

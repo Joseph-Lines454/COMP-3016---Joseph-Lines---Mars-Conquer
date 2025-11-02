@@ -8,13 +8,13 @@
 class MovementComponent {
 public:
 	//Get the images inputted here
-
+	
 	std::string Update(SDL_FRect* other, int health, Health* otherhealth);
 	SDL_FRect* GetRectangle();
 	//Some methods here are needed to render the image correctly
 	MovementComponent(int XstartPos);
 	bool GetCrouth();
-
+	void UpdateRectangle(int xPos, int yPos);
 
 
 private:

@@ -19,6 +19,7 @@ GraphicsComponent::GraphicsComponent(std::map <std::string, std::string> RenderW
 
 //Create Surfaces
 
+
 void GraphicsComponent::TextureCreation(std::map <std::string, std::string> surfaceCreation, std::map <std::string, SDL_Texture*>& surfaceMap)
 {
 	for (auto i = surfaceCreation.begin(); i != surfaceCreation.end(); i++)
@@ -77,23 +78,16 @@ void GraphicsComponent::RenderUpdate(std::string movementType, SDL_FRect* rectag
 	{
 		SetRectangle(rectagleUp);
 	}
-
 	
 	SDL_Texture* TextTemp = nullptr;
 	//SDL_RenderClear(renderWindow);
 
 	if (movementType == "SpaceMan_Walking_East")
 	{
-		
 		EastWalkingIndex = (EastWalkingIndex + 1) % 4;
-		
-		
 		auto EastElem = EastWalk.begin();
 		std::advance(EastElem, 0);
 		std::advance(EastElem, EastWalkingIndex);
-		
-		
-
 		//Gets the name we need to 
 		movementType = EastElem->first;
 		TextTemp = GetTexture(movementType, EastWalk);
@@ -108,46 +102,28 @@ void GraphicsComponent::RenderUpdate(std::string movementType, SDL_FRect* rectag
 			EastWalkingIndex = 3;
 		}
 		
-		
-
-		
 		auto EastElem = EastWalk.rbegin();
-		//std::advance(EastElem, 0);
 		std::advance(EastElem, EastWalkingIndex);
-
-		//std::cout << EastElem->first << std::endl;
-
-		//Gets the name we need to 
 		movementType = EastElem->first;
 		TextTemp = GetTexture(movementType, EastWalk);
-
-
 	}
 	
-
 	if (movementType == "SpaceMan_Croutching" || movementType == "SpaceMan_Shooting" || movementType == "SpaceMan_Standing" || movementType == "SpaceMan_punch" || movementType == "SpaceMan_Kicking")
 	{
-		
-		TextTemp = GetTexture(movementType, EastActions);
-		
+		TextTemp = GetTexture(movementType, EastActions);	
 	}
 	
-
-
 	//Inital Render
 	if (TextTemp != NULL)
 	{
-		//SDL_RenderTexture(renderWindow, TextTemp, NULL, Rectangle);
 		TextureRender = TextTemp;
-		
-		
 	}
 	if (TextTemp == NULL && movementType != "")
 	{
-		//std::cout << "Could not see the graphic!" << std::endl;
+		std::cout << "Couldn't see the graphic!" << std::endl;
 	}
 	SDL_RenderTexture(renderIn, TextureRender, NULL, Rectangle);
-	//SDL_RenderPresent(renderWindow);
+	
 	
 }
 

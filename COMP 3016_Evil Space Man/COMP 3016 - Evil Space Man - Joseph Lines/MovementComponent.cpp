@@ -9,6 +9,8 @@ bool MovementComponent::GetCrouth()
 	return Croutch;
 }
 
+
+
 MovementComponent::MovementComponent(int XstartPos)
 {
 	int windowWidth, windowHeight = 0;
@@ -42,12 +44,14 @@ std::string MovementComponent::Update(SDL_FRect* other, int health, Health* othe
 			//Now we have to update the position of the rectangle
 			if (event.key.scancode == SDL_SCANCODE_D && recttangleMove->x < other->x)
 			{
+				Croutch = false;
 				//std::cout << "The player is moving left!" << std::endl;
 				currentposX = currentposX + 10;
 				return "SpaceMan_Walking_East";
 			}
 			else if (event.key.scancode == SDL_SCANCODE_A && recttangleMove->x > 0)
 			{
+				Croutch = false;
 				currentposX = currentposX - 10;
 				//std::cout << "The player is moving right!" << std::endl;
 				
@@ -55,21 +59,25 @@ std::string MovementComponent::Update(SDL_FRect* other, int health, Health* othe
 			}
 			else if (event.key.scancode == SDL_SCANCODE_F)
 			{
+				Croutch = false;
 				otherhealth->SetHealth(2);
 				return "SpaceMan_Shooting";
 			}
 			else if (event.key.scancode == SDL_SCANCODE_C)
 			{
 				Croutch = true;
+				
 				return "SpaceMan_Croutching";
 			}
 			else if (event.key.scancode == SDL_SCANCODE_SPACE)
 			{
+				Croutch = false;
 				otherhealth->SetHealth(2);
 				return "SpaceMan_punch";
 			}
 			else if (event.key.scancode == SDL_SCANCODE_R)
 			{
+				Croutch = false;
 				otherhealth->SetHealth(2);
 				return "SpaceMan_Kicking";
 			}
@@ -78,10 +86,11 @@ std::string MovementComponent::Update(SDL_FRect* other, int health, Health* othe
 		}
 		if (event.type == SDL_EVENT_KEY_UP)
 		{
-
+			Croutch = false;
 			return "SpaceMan_Standing";
 
 		}
+		
 	}
 
 	recttangleMove->x = currentposX;	
@@ -89,7 +98,12 @@ std::string MovementComponent::Update(SDL_FRect* other, int health, Health* othe
 };
 
 
-
+void MovementComponent::UpdateRectangle(int xPos,int yPos) {
+	recttangleMove->x = xPos;
+	recttangleMove->y = yPos;
+	currentposX = xPos;
+	currentPosY = yPos;
+}
 
 SDL_FRect* MovementComponent::GetRectangle()
 {

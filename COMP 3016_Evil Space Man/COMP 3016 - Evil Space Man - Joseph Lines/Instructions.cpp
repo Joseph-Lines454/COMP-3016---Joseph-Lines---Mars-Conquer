@@ -38,7 +38,7 @@ void Instructions::UpdateGame()
 		
 	}
 	SDL_RenderPresent(renderWindow);
-	SDL_Delay(1000);
+	SDL_Delay(5000);
 	
 }
 

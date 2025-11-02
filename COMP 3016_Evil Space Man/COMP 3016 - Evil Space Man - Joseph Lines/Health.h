@@ -9,4 +9,5 @@ public:
 	int GetHealth();
 	void SetHealth(int health);
 	Health(int health);
+	void ResetHealth(int health);
 };

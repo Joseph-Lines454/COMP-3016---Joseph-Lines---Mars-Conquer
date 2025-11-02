@@ -1,2 +1,9 @@
-﻿  EndScreen.cpp
+﻿  AlienMov.cpp
+C:\Users\pring\OneDrive\Desktop\COMP 3016 - Game Dev - Joseph Lines\COMP 3016_Evil Space Man\COMP 3016 - Evil Space Man - Joseph Lines\Bullet.h(2,10): warning C4067: unexpected tokens following preprocessor directive - expected a newline
+  (compiling source file 'AlienMov.cpp')
+  
+C:\Users\pring\OneDrive\Desktop\COMP 3016 - Game Dev - Joseph Lines\COMP 3016_Evil Space Man\COMP 3016 - Evil Space Man - Joseph Lines\AlienMov.cpp(64,24): warning C4244: '=': conversion from 'int' to 'float', possible loss of data
+C:\Users\pring\OneDrive\Desktop\COMP 3016 - Game Dev - Joseph Lines\COMP 3016_Evil Space Man\COMP 3016 - Evil Space Man - Joseph Lines\AlienMov.cpp(74,24): warning C4244: '=': conversion from 'int' to 'float', possible loss of data
+C:\Users\pring\OneDrive\Desktop\COMP 3016 - Game Dev - Joseph Lines\COMP 3016_Evil Space Man\COMP 3016 - Evil Space Man - Joseph Lines\AlienMov.cpp(142,22): warning C4244: '=': conversion from 'int' to 'float', possible loss of data
+C:\Users\pring\OneDrive\Desktop\COMP 3016 - Game Dev - Joseph Lines\COMP 3016_Evil Space Man\COMP 3016 - Evil Space Man - Joseph Lines\AlienMov.cpp(143,22): warning C4244: '=': conversion from 'int' to 'float', possible loss of data
   COMP 3016 - Evil Space Man - Joseph Lines.vcxproj -> C:\Users\pring\OneDrive\Desktop\COMP 3016 - Game Dev - Joseph Lines\COMP 3016_Evil Space Man\x64\Debug\COMP 3016 - Evil Space Man - Joseph Lines.exe

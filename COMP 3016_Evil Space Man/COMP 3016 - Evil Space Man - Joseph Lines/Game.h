@@ -18,9 +18,10 @@ public:
 	
 	virtual SDL_Window* GetWindow();
 	virtual SDL_Renderer* GetRenderWindow();
+	virtual SDL_Surface* RenderFont(std::wstring textInput);
 protected:
 	//When declared, not pointing to any valid memory
-	virtual SDL_Surface* RenderFont(std::wstring textInput);
+	
 
 	SDL_Window* newWindow;
 	SDL_Renderer* renderWindow;

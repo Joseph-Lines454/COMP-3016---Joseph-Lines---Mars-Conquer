@@ -1,5 +1,7 @@
 Evil SpaceMan
 
+Video: 
+
 GamePlay Description
 The game starts of with the title screen. The user is then able to enter the next screen, providing some story on the game.
 The aim of the game is for the player to defeat the planets hero/Alien three times, whilst the game gets continuously harder each round.
@@ -7,6 +9,16 @@ The player Can Kick, Punch and Croutch to dodge the Aliens Special attack. When 
 The Alien then throws a fruit at the user which is designed to significantly decrease their health. The player is able to dodge this attack by croutching. The player is then able to attack the Alien, killing the alien.
 If the user beats the Alien, the next round will commence where the Alien will get a bit harder (the amount of moves that they can throw is increased). The players Aim is to beat the Alien in all three rounds and if successfull,
 they will have their score which is time based compared to the highest score. The highest score will be overwritten if the player scored higher than the highest score. If they player falters in any round, the Alien wins and the player loses.
+
+How to Run Executable/ Futher details on how to play the game:
+
+Click on the exe within the Evil Space Man Folder.
+The executable should boot up.
+Click any key to start playing.
+Use A and D to walk around.
+Use R,F and SPACE to attack.
+Use C to croutch.
+
 
 Dependencies used
 
@@ -59,7 +71,6 @@ Implementing this pattern has a variety of benifits on the program. Readability 
 
 Game Mechanics:
 
-Certain 
 
 Movement Mechanics:
 
@@ -77,13 +88,10 @@ High Score:
 
 High score has been implemented to drive competitiveness. The user should aim to beat their previous high score, which can provide a competitive nature to the game.
 
-
-
 Origonality of Game Mechanics:
 
 Some of the game mechanics have been able to provide some origonality. For example, increasing the aliens attack output as the rounds go along could be considered a mechanic which is more origonal instead of just increasing the damage that the alien does
-to the other player. The player having to dodge fruit and ducking as some origonality to it (however it does build on previous game mechanics).
-
+to the other player. The player having to dodge fruit and ducking as some origonality to it (however it does build on previous game mechanics and could be considered more creative).
 
 UML designs
 
@@ -92,10 +100,27 @@ UML designs
 The UML design above is the less focused on the gameplay, but the surounding elements (Such as the instructions, high score screen, title screen). Game includes some of the definitions for the derived classes (for example, all of the classes use the render
 font function).
 
-
-
 Sample Screens
 
+Title Screen:
+
+<img width="798" height="800" alt="image" src="https://github.com/user-attachments/assets/1a491f18-a799-4811-b1a3-a335936e0fb8" />
+
+Instructions:
+
+<img width="792" height="795" alt="image" src="https://github.com/user-attachments/assets/ca1220d5-7b9f-4d9d-b374-0a7ec85db7cc" />
+
+Player Loss Screen:
+
+<img width="797" height="796" alt="image" src="https://github.com/user-attachments/assets/dc4f71aa-b0c3-41c9-821b-9b255ecdd634" />
+
+Game Screen:
+
+<img width="797" height="801" alt="image" src="https://github.com/user-attachments/assets/5d8ae146-cf5e-410e-a0fb-b5cb26da5524" />
+
+Round Screen:
+
+<img width="803" height="796" alt="image" src="https://github.com/user-attachments/assets/926da8b7-5635-4921-a623-90c8adad84dd" />
 
 
 Test cases and expection
@@ -124,30 +149,11 @@ Bullet:
 
 <img width="552" height="776" alt="image" src="https://github.com/user-attachments/assets/3c9e9d04-1804-476a-95a6-8dacd7cdc38a" />
 
+Evaluation:
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+Overall, I think the game has some good aspects and some aspects which could be imporoved upon. For example I think the game has some creativity, whith the story contributing to that in a big way. I visually the game has great visuals as well as decent game play.
+I think the game has a great foundation to be expanded upon. For example adding sound into the game which allow for it to be more immersive as well as engaging. Increasing the capabilities of the alien AI would also allow for a much more enjoyable game as well as
+implemnting visuals for health. Implemting different backgrounds could be more intresting aswelll. Adding a special attacks for the player would make the game more enjoyable.
 
 
 

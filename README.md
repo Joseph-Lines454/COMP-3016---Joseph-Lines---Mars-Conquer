@@ -46,12 +46,6 @@ we have defined (if the Delay is more than the frame duration), we delay the pro
 
 <img width="736" height="387" alt="image" src="https://github.com/user-attachments/assets/6640900b-da97-4ad8-a975-b858ee3fcdce" />
 
-
-Update Method
-
-
-
-
 Sequencing Patterns
 
 The Component Pattern has been implemented into this game. The idea of the component pattern is to split code across different domains leaving a character class with references to the different components of the player (for example, the screenshot below shows
@@ -65,6 +59,42 @@ Implementing this pattern has a variety of benifits on the program. Readability 
 
 Game Mechanics:
 
+Certain 
+
+Movement Mechanics:
+
+The player is allowed to move forwards or backwards within the game. When the player pressed the D key the player is able to move towards the Alien and Vice versa. Once the player reaches the alien, the player is unable to move forward.
+The Alien is also follows this concept. The player can move backwards by pressing A however the Alien continues to attack the player. If the player/Alien hits the edge of the world, the player is no longer able to move in that direction.
+The player is allowed to crouth when the Alien lanuches their special/defense attack. The aim is to avoid being hit by the fruit.
+
+Combat Mechanics/ Round Based:
+
+Different combat mechanics are present within the game. The user is able to hit the Alien. If the user hits the Alien, the other players health is reduced by 2. If the user kicks the alien, the alien's health is reduced by 5 points,
+the same concept applies for the user. When the Aliens health drops below 40, the Alien retreats to the edge of the world, and throws na fruit at the enemy player. If the player is hit by the fruit, the player will lose 20 health points.
+The frequency that the alien is able to deal damage to the player is limitied based on round. As the rounds increase, the frequency of the Aliens hits increase, dealing more health to the user making the game more competitive.
+
+High Score:
+
+High score has been implemented to drive competitiveness. The user should aim to beat their previous high score, which can provide a competitive nature to the game.
+
+
+
+Origonality of Game Mechanics:
+
+Some of the game mechanics have been able to provide some origonality. For example, increasing the aliens attack output as the rounds go along could be considered a mechanic which is more origonal instead of just increasing the damage that the alien does
+to the other player. The player having to dodge fruit and ducking as some origonality to it (however it does build on previous game mechanics).
+
+
+UML designs
+
+<img width="1037" height="767" alt="image" src="https://github.com/user-attachments/assets/f7174386-ca2f-4d89-8839-5c31db1c59be" />
+
+The UML design above is the less focused on the gameplay, but the surounding elements (Such as the instructions, high score screen, title screen). Game includes some of the definitions for the derived classes (for example, all of the classes use the render
+font function).
+
+
+
+Sample Screens
 
 
 
@@ -93,36 +123,6 @@ Game Over Pages:
 Bullet:
 
 <img width="552" height="776" alt="image" src="https://github.com/user-attachments/assets/3c9e9d04-1804-476a-95a6-8dacd7cdc38a" />
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 

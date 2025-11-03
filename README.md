@@ -8,6 +8,23 @@ The Alien then throws a fruit at the user which is designed to significantly dec
 If the user beats the Alien, the next round will commence where the Alien will get a bit harder (the amount of moves that they can throw is increased). The players Aim is to beat the Alien in all three rounds and if successfull,
 they will have their score which is time based compared to the highest score. If they player falters in any round, the Alien wins and the player loses.
 
+Dependencies used
+
+SDL_3 was used for the visuals of the game:
+
+https://www.libsdl.org/
+
+SDL_tff_devel_3.1.0-vc:
+
+https://github.com/libsdl-org/SDL_ttf/releases
+
+Use of AI description:
+
+AI was used within the assigment of the generation of assets. All of the characters, backgrounds, bullets. The font is not included. The tool that was used is called pixel lab. https://www.pixellab.ai/
+AI was used within the assigment. AI was used for some debugging of errors within the code and suggestions. For example, a vector of SDL_Surfaces was causing the progam to crash, AI suggested storing the images as SDL_Textures instead - ChatGPT free version was used.
+
+
+Game Programming Patterns:
 
 
 Test cases and expection
